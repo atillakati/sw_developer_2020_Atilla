@@ -29,28 +29,45 @@ namespace EingabeDezimalWerte
             int headerXPosition = 0;
             string headerText = "Flächen Berechnung";
 
+
             //create header
             //"###" => new string('#', 3)
-            Console.WriteLine(new string('#', Console.WindowWidth-1));
+            Console.WriteLine(new string('#', Console.WindowWidth - 1));
             headerXPosition = (Console.WindowWidth - headerText.Length) / 2;
             Console.CursorLeft = headerXPosition;
             Console.WriteLine("Flächen Berechnung");
-            Console.WriteLine(new string('#', Console.WindowWidth - 1));            
+            Console.WriteLine(new string('#', Console.WindowWidth - 1));
 
             //display input prompt & get length values
-            Console.WriteLine("\nBitte Seitenlängen angeben:\n");                        
-            Console.Write("\ta: ");            
-            lengthA = double.Parse(Console.ReadLine());
+            Console.WriteLine("\nBitte Seitenlängen angeben:\n");
+            Console.Write("\ta: ");
 
-            Console.Write("\tb: ");            
-            lengthB = double.Parse(Console.ReadLine());
+            try
+            {
+                lengthA = double.Parse(Console.ReadLine());
+
+                Console.Write("\tb: ");
+                lengthB = double.Parse(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\nUups! Leider ist was schief gelaufen: " + e.Message);                
+                //Console.WriteLine("Source: \n" + e.StackTrace);
+
+                Environment.Exit(1);
+            }
+            //finally
+            //{
+
+            //}
 
             //calculate area of rectangle
             calculatedRectangleArea = lengthA * lengthB;
 
             //display result
             Console.WriteLine($"\nFläche des Rechtecks ({lengthA} x {lengthB}): {calculatedRectangleArea}");
-
+            
+            Console.WriteLine("Program Ende!");
         }
     }
 }
