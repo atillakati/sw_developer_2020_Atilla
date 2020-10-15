@@ -26,22 +26,24 @@ namespace EingabeDezimalWerte
             double lengthA = 0.0;
             double lengthB = 0.0;
             double calculatedRectangleArea = 0.0;
-            string input = string.Empty;
+            int headerXPosition = 0;
+            string headerText = "Flächen Berechnung";
 
             //create header
-            Console.WriteLine("############################################");
-            Console.WriteLine("             Flächen Berechnung");
-            Console.WriteLine("############################################");
+            //"###" => new string('#', 3)
+            Console.WriteLine(new string('#', Console.WindowWidth-1));
+            headerXPosition = (Console.WindowWidth - headerText.Length) / 2;
+            Console.CursorLeft = headerXPosition;
+            Console.WriteLine("Flächen Berechnung");
+            Console.WriteLine(new string('#', Console.WindowWidth - 1));            
 
             //display input prompt & get length values
             Console.WriteLine("\nBitte Seitenlängen angeben:\n");                        
-            Console.Write("\ta: ");
-            input = Console.ReadLine();
-            lengthA = double.Parse(input);
+            Console.Write("\ta: ");            
+            lengthA = double.Parse(Console.ReadLine());
 
-            Console.Write("\tb: ");
-            input = Console.ReadLine();
-            lengthB = double.Parse(input);
+            Console.Write("\tb: ");            
+            lengthB = double.Parse(Console.ReadLine());
 
             //calculate area of rectangle
             calculatedRectangleArea = lengthA * lengthB;
