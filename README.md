@@ -21,3 +21,5 @@ namespace HelloWorld.Beispiel
 Nachdem wir unser erstes obligatorisch Hello World Beispiel im Detail angesehen haben, erarbeiten wir uns nun die Grundlagen von C#.
 
 Unsere Reise wird uns von den elementaren Grunddatentypen bis hin zu Architektur Patterns wie Strategy-Pattern führen. Unterwegs besuchen wir Json, MongoDB, Micro-Services und evtl. sogar auch die Docker Grundlagen.
+
+Unter http://meinwifikurs.at/login/index.php findet ihr den ONLINE Zugang in die Lernplattform vom WIFI.
