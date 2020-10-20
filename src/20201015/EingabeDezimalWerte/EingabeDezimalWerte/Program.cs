@@ -52,7 +52,7 @@ namespace EingabeDezimalWerte
             catch (Exception e)
             {
                 Console.WriteLine("\nUups! Leider ist was schief gelaufen: " + e.Message);                
-                //Console.WriteLine("Source: \n" + e.StackTrace);
+                Console.WriteLine("Source: \n" + e.StackTrace);
 
                 Environment.Exit(1);
             }
