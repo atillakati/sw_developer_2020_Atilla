@@ -1,7 +1,7 @@
 # sw_developer_2020
 Beispiel aus der WIFI Veranstalung SW Developer 2020
 
-## Das erste Beispile
+## Das erste Beispiel
 
 ```C#
 using System;
