@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{497D3CC9-C370-47C9-B2A9-AF8537D8BAEA}</ProjectGuid>
+    <ProjectGuid>{9800362B-BE24-44CE-9B66-E6FC6F37F740}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NiceInputExample</RootNamespace>
-    <AssemblyName>NiceInputExample</AssemblyName>
+    <RootNamespace>StrukturenGL</RootNamespace>
+    <AssemblyName>StrukturenGL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,11 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teilnehmer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,9 +8,11 @@ using System.Xml.XPath;
 namespace NiceInputExample
 {
     class Program
-    {
+    {        
         static void Main(string[] args)
         {
+            const int MAX_AGE = 150;
+
             /*
              *  Der User soll sein Geburtsjahr eingeben. Daraufhin wird das Alter berechnet und ausgegeben.
              *  - Fehleingaben sollen abgefangen werden (fehlertolerante Eingabe)
@@ -21,8 +23,6 @@ namespace NiceInputExample
              *      - PEGI 7+
              *      - nicht vor 1870 (max. 150 Jahre) => 150 Jahre ab heute!
              */
-
-            const int MAX_AGE = 150;
             const int MIN_AGE = 7;
 
             bool inputIsValid = true;
@@ -30,15 +30,14 @@ namespace NiceInputExample
             int age = 0;
             string inputString = string.Empty;
 
+            //Implementierung Eingabe
             do
             {
-                Console.Write("Bitte das Geburtsjahr eingeben: ");
-
-                //Fehleingaben abfangen
-                inputString = Console.ReadLine();
-                //1585sdfg
+                Console.Write("Bitte das Geburtsjahr eingeben: ");                
+                inputString = Console.ReadLine();                
                 inputIsValid = true;
 
+                //Fehleingaben abfangen
                 if (string.IsNullOrWhiteSpace(inputString))
                 {
                     inputIsValid = false;
@@ -83,3 +82,5 @@ namespace NiceInputExample
         }
     }
 }
+
+
