@@ -92,7 +92,8 @@ namespace Koordinaten_8
                     }
 
                     //check the values
-                    if (xPos > maxWidth || xPos < 0 || yPos > maxLength || yPos < 0)
+                    if (myPointList[i].X_Pos > maxWidth || myPointList[i].X_Pos < 0 ||
+                        myPointList[i].Y_Pos > maxLength || myPointList[i].Y_Pos < 0)
                     {
                         Console.WriteLine("ERROR: Leider sind diese Eingaben ungültig!");
                         userInputIsValid = false;
