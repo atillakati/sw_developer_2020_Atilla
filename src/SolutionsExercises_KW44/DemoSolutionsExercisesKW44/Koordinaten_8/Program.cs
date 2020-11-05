@@ -58,9 +58,7 @@ namespace Koordinaten_8
             bool userInputIsValid = false;
             int maxWidth = Console.WindowWidth - 1;
             int maxLength = Console.WindowHeight - 1;
-            int pointCount = 0;
-            int xPos = 0;
-            int yPos = 0;
+            int pointCount = 0;     
             Point[] myPointList;
 
             //get count of points
