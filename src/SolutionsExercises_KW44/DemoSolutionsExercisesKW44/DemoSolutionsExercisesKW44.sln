@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahlenraten_4", "Zahlenrate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flächenberechnung_5", "Flächenberechnung_5\Flächenberechnung_5.csproj", "{7C0A2255-6F09-4F32-AB13-0DED45E18F98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MittelwertBerechnung_6", "MittelwertBerechnung_6\MittelwertBerechnung_6.csproj", "{585D2FD3-2D0C-4B60-B834-667A475CB5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7C0A2255-6F09-4F32-AB13-0DED45E18F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C0A2255-6F09-4F32-AB13-0DED45E18F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C0A2255-6F09-4F32-AB13-0DED45E18F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585D2FD3-2D0C-4B60-B834-667A475CB5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585D2FD3-2D0C-4B60-B834-667A475CB5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585D2FD3-2D0C-4B60-B834-667A475CB5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585D2FD3-2D0C-4B60-B834-667A475CB5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
