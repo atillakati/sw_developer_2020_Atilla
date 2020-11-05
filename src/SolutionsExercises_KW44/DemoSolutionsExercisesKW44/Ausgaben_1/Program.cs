@@ -10,12 +10,12 @@ namespace Ausgaben_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Name: Atilla Kati");
-            Console.WriteLine("Alter: 42");
-            Console.WriteLine("Wohnort:\n");
+            Console.WriteLine("Name:\tAtilla Kati");
+            Console.WriteLine("Alter:\t42");
+            Console.WriteLine("Wohnort:");
             Console.WriteLine("\n\t6850 Dornbirn");
             Console.WriteLine("Kommentar zu C#:");
-            Console.WriteLine("\n\tC# ist sooooo einfach!");
+            Console.WriteLine("\t     C# ist sooooo einfach!");
         }
     }
 }
