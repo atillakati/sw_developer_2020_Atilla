@@ -4,52 +4,17 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.XPath;
 
-namespace MethodenGL
+namespace Wifi.ToolLibrary.ConsoleIo
 {
-    class Program
+    public class ConsoleTools
     {
-        static void Main(string[] args)
-        {
-            int eineVariable = 12;
-
-            DisplayHello();
-            DisplayHello();
-            DisplayHello();
-            DisplayHello();
-
-            DisplayColoredMessage("Hallo liebe Leute!", ConsoleColor.Yellow);
-
-            DisplayColoredMessage("Hallo liebe Leute!", ConsoleColor.Red);
-            DisplayColoredMessage("Hallo liebe Leute!", ConsoleColor.Green);
-
-            double erg = CalculateWeight(20.0);
-            Console.WriteLine($"Ergebnis: {erg}");
-
-            eineVariable = GetInt("Bitte Länge eingeben: ");
-            Console.WriteLine("Länge = " + eineVariable);
-
-            double gewicht = GetDouble("Gewicht eingeben: ");
-            Console.WriteLine($"Das Gewicht ist {gewicht}.");
-
-            DateTime gebDate = GetDateTime("Geburtsdatum eingeben: ");
-            Console.WriteLine($"Sie sind {DateTime.Now.Year - gebDate.Year} Jahre alt.");
-        }
-
-        // Signatur
-        //Rückgabetyp Bezeichnung ( [Parameter] )        
-        static void DisplayHello()
-        {
-            Console.WriteLine("Hello!");
-        }
-
         /// <summary>
-        /// 
+        /// Generates colored messages for the console output
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="messageColor"></param>
-        static void DisplayColoredMessage(string message, ConsoleColor messageColor)
+        /// <param name="message">The message to display</param>
+        /// <param name="messageColor">The color of the message</param>
+        public static void DisplayColoredMessage(string message, ConsoleColor messageColor)
         {
             ConsoleColor oldColor = Console.ForegroundColor;
             Console.ForegroundColor = messageColor;
@@ -59,16 +24,16 @@ namespace MethodenGL
             Console.ForegroundColor = oldColor;
         }
 
-        // Signatur
-        //Rückgabetyp Bezeichnung ( [Parameter] )        
-        static double CalculateWeight(double nettoWeight)
+        /// <summary>
+        /// Generates colored messages for the console output
+        /// </summary>
+        /// <param name="message">The message to display</param>
+        /// <param name="messageColor">The color of the message</param>
+        public static void DisplayColoredMessage(string message)
         {
-            double result = 0.0;
-
-            result = nettoWeight * 1.25;
-
-            return result;
+            DisplayColoredMessage(message, ConsoleColor.Yellow);
         }
+
 
 
         /// <summary>
@@ -76,7 +41,7 @@ namespace MethodenGL
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
         /// <returns>Input value as integer</returns>
-        static int GetInt(string inputPrompt)
+        public static int GetInt(string inputPrompt)
         {
             int userInputValue = 0;
             bool userInputIsValid = false;
@@ -99,14 +64,14 @@ namespace MethodenGL
             while (!userInputIsValid);
 
             return userInputValue;
-        }        
+        }
 
         /// <summary>
         /// Reads an double value from console input.
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
         /// <returns></returns>
-        static double GetDouble(string inputPrompt)
+        public static double GetDouble(string inputPrompt)
         {
             double userInputValue = 0;
             bool userInputIsValid = false;
@@ -136,7 +101,7 @@ namespace MethodenGL
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
         /// <returns></returns>
-        static DateTime GetDateTime(string inputPrompt)
+        public static DateTime GetDateTime(string inputPrompt)
         {
             DateTime userInputValue = DateTime.MinValue;
             bool userInputIsValid = false;
@@ -168,7 +133,7 @@ namespace MethodenGL
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
         /// <returns></returns>
-        static string GetString(string inputPrompt)
+        public static string GetString(string inputPrompt)
         {
             Console.Write(inputPrompt);
 
