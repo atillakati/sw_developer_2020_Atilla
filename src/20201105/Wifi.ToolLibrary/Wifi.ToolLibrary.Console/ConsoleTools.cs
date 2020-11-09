@@ -141,5 +141,10 @@ namespace Wifi.ToolLibrary.ConsoleIo
             return Console.ReadLine();
         }
 
+
+        public static void HelloWorld()
+        {
+            Console.WriteLine("Hi!");
+        }
     }
 }
