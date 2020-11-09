@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wifi.ToolLibrary.ConsoleIo</name>
+    </assembly>
+    <members>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.DisplayColoredMessage(System.String,System.ConsoleColor)">
+            <summary>
+            Generates colored messages for the console output
+            </summary>
+            <param name="message">The message to display</param>
+            <param name="messageColor">The color of the message</param>
+        </member>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.DisplayColoredMessage(System.String)">
+            <summary>
+            Generates colored messages for the console output
+            </summary>
+            <param name="message">The message to display</param>
+            <param name="messageColor">The color of the message</param>
+        </member>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.GetInt(System.String)">
+            <summary>
+            Reads an integer value from console input.
+            </summary>
+            <param name="inputPrompt">Prompt for the user</param>
+            <returns>Input value as integer</returns>
+        </member>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.GetDouble(System.String)">
+            <summary>
+            Reads an double value from console input.
+            </summary>
+            <param name="inputPrompt">Prompt for the user</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.GetDateTime(System.String)">
+            <summary>
+            Reads an DateTime value from console input. The input format must be [dd.MM.yyyy hh:mm:ss].
+            </summary>
+            <param name="inputPrompt">Prompt for the user</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wifi.ToolLibrary.ConsoleIo.ConsoleTools.GetString(System.String)">
+            <summary>
+            Reads an string value from console input.
+            </summary>
+            <param name="inputPrompt">Prompt for the user</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

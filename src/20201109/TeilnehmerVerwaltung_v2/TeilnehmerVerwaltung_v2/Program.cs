@@ -41,7 +41,7 @@ namespace TeilnehmerVerwaltung_v2
             DisplayTeilnehmerData(meineTeilnehmer);
 
             //Teilnehmerdaten optional als Datei sichern
-            SaveDataToFile(meineTeilnehmer);
+            SaveDataToFile(meineTeilnehmer);            
         }
 
         static void SaveDataToFile(Teilnehmer[] meineTeilnehmer)
