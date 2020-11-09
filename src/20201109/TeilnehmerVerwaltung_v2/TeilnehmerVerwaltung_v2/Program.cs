@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+
 using Wifi.ToolLibrary.ConsoleIo;
 
 namespace TeilnehmerVerwaltung_v2
@@ -31,45 +29,82 @@ namespace TeilnehmerVerwaltung_v2
 
             int teilnehmerCount = 0;
             Teilnehmer[] meineTeilnehmer;
+            
 
             //Anzahl einlesen
-            teilnehmerCount = ConsoleTools.GetInt("Anzahl der Teilnehmer eingeben: ");            
+            teilnehmerCount = ConsoleTools.GetInt("Anzahl der Teilnehmer eingeben: ");
 
             //Teilnehmerdaten einlesen
-            meineTeilnehmer = TeilnehmerDatenEinlesen(teilnehmerCount);
+            meineTeilnehmer = ReadTeilnehmerData(teilnehmerCount);
 
             //Teilnehmerdaten ausgeben
-            DisplayTeilnehmer(meineTeilnehmer);
+            DisplayTeilnehmerData(meineTeilnehmer);
+
+            //Teilnehmerdaten optional als Datei sichern
+            SaveDataToFile(meineTeilnehmer);
         }
 
-        static void DisplayTeilnehmer(Teilnehmer[] meineTeilnehmer)
+        static void SaveDataToFile(Teilnehmer[] meineTeilnehmer)
+        {
+            string userInput = ConsoleTools.GetString("Wollen Sie die Daten in einer Datei sichern (j/n)?");
+            if (userInput.ToLower() == "j")
+            {
+                string fileName = ConsoleTools.GetString("Dateiname: ");
+                if (!string.IsNullOrWhiteSpace(fileName))
+                {
+                    try
+                    {
+                        SaveData(fileName, meineTeilnehmer);
+                        Console.WriteLine($"Daten wurden in die Datei {fileName} geschrieben.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Daten konnten nicht gesichert werden.");
+                        Console.WriteLine($"ERROR: {ex.Message}");
+                    }
+                }
+            }            
+        }
+
+        static void SaveData(string fileName, Teilnehmer[] meineTeilnehmer)
+        {
+            using (StreamWriter sw = new StreamWriter(fileName, true))
+            {
+                foreach (Teilnehmer t in meineTeilnehmer)
+                {                    
+                    sw.WriteLine($"{t.Vorname}, {t.Nachname}, {t.Strasse}, {t.HausNr}, {t.Plz}, {t.Ort}, {t.Geburtsdatum}");
+                }
+            }
+        }
+
+        static void DisplayTeilnehmerData(Teilnehmer[] meineTeilnehmer)
         {
             foreach (Teilnehmer t in meineTeilnehmer)
             {
-                Console.WriteLine($"{t.Vorname}, {t.Nachname}, {t.Geburtsdatum.Date}, {t.Plz}, {t.Ort}");
+                Console.WriteLine($"{t.Vorname} {t.Nachname} [{t.Geburtsdatum.Year}] - {t.Plz} {t.Ort}");
             }
         }
 
-        static Teilnehmer[] TeilnehmerDatenEinlesen(int count)
+        static Teilnehmer[] ReadTeilnehmerData(int teilnehmerCount)
         {
-            Teilnehmer[] meineTeilnehmer = new Teilnehmer[count];
+            Teilnehmer[] myTempDataList = new Teilnehmer[teilnehmerCount];
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < teilnehmerCount; i++)
             {
-                Console.WriteLine($"Daten für Teilnehmer {i+1} eingeben:");
+                Console.WriteLine($"\nBitte Daten für Teilnehmer {i+1} eingeben:");
 
-                meineTeilnehmer[i].Vorname = ConsoleTools.GetString("\tVorname: ");
-                meineTeilnehmer[i].Nachname = ConsoleTools.GetString("\tNachname: ");
+                myTempDataList[i].Vorname = ConsoleTools.GetString("\tVorname: ");
+                myTempDataList[i].Nachname = ConsoleTools.GetString("\tNachname: ");
 
-                meineTeilnehmer[i].Strasse = ConsoleTools.GetString("\tStrasse: ");
-                meineTeilnehmer[i].HausNr= ConsoleTools.GetString("\tHausnummer: ");
-                meineTeilnehmer[i].Ort= ConsoleTools.GetString("\tOrt: ");
-                meineTeilnehmer[i].Plz = ConsoleTools.GetInt("\tPlz: ");
+                myTempDataList[i].Strasse = ConsoleTools.GetString("\tStrasse: ");
+                myTempDataList[i].HausNr = ConsoleTools.GetString("\tHausNr: ");
+                myTempDataList[i].Ort = ConsoleTools.GetString("\tOrt: ");
+                myTempDataList[i].Plz = ConsoleTools.GetInt("\tPlz: ");
 
-                meineTeilnehmer[i].Geburtsdatum = ConsoleTools.GetDateTime("\tGeburtsdatum : ");
+                myTempDataList[i].Geburtsdatum = ConsoleTools.GetDateTime("\tGeburtsdatum: ");
             }
 
-            return meineTeilnehmer;
+            return myTempDataList;
         }
     }
 }

@@ -10,6 +10,6 @@ namespace TeilnehmerVerwaltung_v2
         public string HausNr;
         public string Ort;
         public int Plz;
-        internal DateTime Geburtsdatum;
+        public DateTime Geburtsdatum;
     }
 }
