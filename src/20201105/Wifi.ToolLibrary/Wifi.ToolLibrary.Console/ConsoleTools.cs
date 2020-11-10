@@ -14,14 +14,18 @@ namespace Wifi.ToolLibrary.ConsoleIo
         /// </summary>
         /// <param name="message">The message to display</param>
         /// <param name="messageColor">The color of the message</param>
-        public static void DisplayColoredMessage(string message, ConsoleColor messageColor)
+        /// <param name="restoreOldColor">Defines, wheather the old foreground-color should be restored or not.</param>
+        public static void DisplayColoredMessage(string message, ConsoleColor messageColor, bool restoreOldColor)
         {
             ConsoleColor oldColor = Console.ForegroundColor;
             Console.ForegroundColor = messageColor;
 
             Console.WriteLine(message);
 
-            Console.ForegroundColor = oldColor;
+            if (restoreOldColor)
+            {
+                Console.ForegroundColor = oldColor;
+            }
         }
 
         /// <summary>
@@ -31,9 +35,18 @@ namespace Wifi.ToolLibrary.ConsoleIo
         /// <param name="messageColor">The color of the message</param>
         public static void DisplayColoredMessage(string message)
         {
-            DisplayColoredMessage(message, ConsoleColor.Yellow);
+            DisplayColoredMessage(message, ConsoleColor.Yellow, true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message">The message to display</param>
+        /// <param name="messageColor">The color of the message</param>
+        public static void DisplayColoredMessage(string message, ConsoleColor messageColor)
+        {
+            DisplayColoredMessage(message, messageColor, true);
+        }
 
 
         /// <summary>
@@ -100,13 +113,12 @@ namespace Wifi.ToolLibrary.ConsoleIo
         /// Reads an DateTime value from console input. The input format must be [dd.MM.yyyy hh:mm:ss].
         /// </summary>
         /// <param name="inputPrompt">Prompt for the user</param>
+        /// <param name="dateTimeInputFormatString">Defines the input format of DateTime</param>
         /// <returns></returns>
-        public static DateTime GetDateTime(string inputPrompt)
+        public static DateTime GetDateTime(string inputPrompt, string dateTimeInputFormatString)
         {
             DateTime userInputValue = DateTime.MinValue;
             bool userInputIsValid = false;
-
-            string inputFormat = "dd.MM.yyyy hh:mm:ss";
 
             do
             {
@@ -114,7 +126,7 @@ namespace Wifi.ToolLibrary.ConsoleIo
                 try
                 {
                     //read input value and convert to DateTime
-                    userInputValue = DateTime.ParseExact(Console.ReadLine(), inputFormat, CultureInfo.InvariantCulture);
+                    userInputValue = DateTime.ParseExact(Console.ReadLine(), dateTimeInputFormatString, CultureInfo.InvariantCulture);
                     userInputIsValid = true;
                 }
                 catch (Exception ex)
@@ -126,6 +138,16 @@ namespace Wifi.ToolLibrary.ConsoleIo
             while (!userInputIsValid);
 
             return userInputValue;
+        }
+
+        /// <summary>
+        /// Reads an DateTime value from console input. The input format must be [dd.MM.yyyy hh:mm:ss].
+        /// </summary>
+        /// <param name="inputPrompt">Prompt for the user</param>        
+        /// <returns></returns>
+        public static DateTime GetDateTime(string inputPrompt)
+        {
+            return GetDateTime(inputPrompt, "dd.MM.yyyy HH:mm:ss");
         }
 
         /// <summary>

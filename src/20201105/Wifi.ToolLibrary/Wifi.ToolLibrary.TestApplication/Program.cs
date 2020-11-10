@@ -12,17 +12,14 @@ namespace Wifi.ToolLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            ConsoleTools.DisplayColoredMessage("Dies ist ein Test..", ConsoleColor.Red);
+            ConsoleTools.DisplayColoredMessage("Hallo Leute!", ConsoleColor.Magenta);
 
-            double val1 = ConsoleTools.GetDouble("Bitte Wert eingeben: ");
+            ConsoleTools.DisplayColoredMessage("Hallo liebe Leute..", ConsoleColor.Cyan, true);
 
-            Console.WriteLine($"Der Wert war: {val1}");
+            Console.WriteLine("Testausgabe im Main()");
 
-            ConsoleTools.DisplayColoredMessage("Test", ConsoleColor.Yellow);
-
-            ConsoleTools.DisplayColoredMessage("Hallo");
-
-            Console.ReadLine();
+            ConsoleTools.GetDateTime("Alte Version: Geburtstag: ");
+            ConsoleTools.GetDateTime("Neue Version: Geburtstag: ", "yyyy-MM-dd");
         }
     }
 }
