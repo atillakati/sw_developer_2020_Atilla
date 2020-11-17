@@ -1,50 +1,29 @@
-﻿using System;
-
-namespace ArticleExample
+﻿namespace ArticleExample
 {
     public class Artikel
     {
         private string _bezeichnung;
-        private Guid _code;
-        private decimal _preis;
-        private ArtikelStatus _status;
 
-        public Artikel(string bezeichnung, decimal preis)
+        public Artikel()
         {
-            _bezeichnung = bezeichnung;
-            _preis = preis;
 
-            _status = ArtikelStatus.Available;
-            _code = Guid.NewGuid();
         }
 
         public string Bezeichnung
         {
-            get { return _bezeichnung; }
-            set { _bezeichnung = value; }
-        }
+            get
+            {
 
-        public Guid Code
-        {
-            get { return _code; }
-            set { _code = value; }
-        }
+                return _bezeichnung;
+            }
 
-        public decimal Preis
-        {
-            get { return _preis; }
-            set { _preis = value; }
-        }
-        public ArtikelStatus Status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-
-        public string GetInfoString()
-        {
-            string tmp = $"{_bezeichnung}\nArtNr: {_code} - [{_status}]\n";
-            return tmp;
+            set
+            {
+                if(!string.IsNullOrEmpty(value) || value.Length > 7)
+                {
+                    _bezeichnung = value;
+                }
+            }
         }
     }
 }
