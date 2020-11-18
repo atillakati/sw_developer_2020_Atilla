@@ -10,9 +10,14 @@ namespace ArticleExample
     {
         static void Main(string[] args)
         {
-            Artikel artikel = new Artikel("Schraube M3x15mm, verchromt", 0.10m);
+            Artikel artikel = new Artikel();
 
-            Console.WriteLine(artikel.GetInfoString());
-        }
+            artikel.Bezeichnung = "Schraube M3 x 15mm. verchromt";
+            artikel.Bezeichnung = string.Empty;
+
+            artikel.
+
+            Console.WriteLine("Content: " + artikel.Bezeichnung);
+        }   
     }
 }
