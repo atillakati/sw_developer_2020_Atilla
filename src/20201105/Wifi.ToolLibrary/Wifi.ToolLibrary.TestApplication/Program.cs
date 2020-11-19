@@ -12,14 +12,13 @@ namespace Wifi.ToolLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            ConsoleTools.DisplayColoredMessage("Hallo Leute!", ConsoleColor.Magenta);
+            RandomAdv rnd = new RandomAdv();
 
-            ConsoleTools.DisplayColoredMessage("Hallo liebe Leute..", ConsoleColor.Cyan, true);
+            Console.WriteLine($"Zufällige Zahl (1-10): {rnd.Next(1,11)}");
 
-            Console.WriteLine("Testausgabe im Main()");
-
-            ConsoleTools.GetDateTime("Alte Version: Geburtstag: ");
-            ConsoleTools.GetDateTime("Neue Version: Geburtstag: ", "yyyy-MM-dd");
+            Console.WriteLine($"Zufälliger String: {rnd.NextString(15)}");
+            Console.WriteLine($"Zufälliger String: {rnd.NextString(15)}");
+            Console.WriteLine($"Zufälliger String: {rnd.NextString(25)}");
         }
     }
 }
