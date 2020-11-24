@@ -24,5 +24,5 @@ Unsere Reise wird uns von den elementaren Grunddatentypen bis hin zu Architektur
 
 Unter http://meinwifikurs.at/login/index.php findet ihr den ONLINE Zugang in die Lernplattform vom WIFI.
 
-![Clean Code](docs/CC_Prinzipien.jpg)
+![Clean Code](https://github.com/atillakati/sw_developer_2020_Atilla/docs/CC_Prinzipien.PNG)
 
