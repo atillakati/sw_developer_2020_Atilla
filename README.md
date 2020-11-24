@@ -1,3 +1,4 @@
+![Wifi Campus logo](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/wifi_campus.PNG)
 # sw_developer_2020
 Beispiel aus der WIFI Veranstalung SW Developer 2020
 
