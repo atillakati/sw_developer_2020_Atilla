@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataRepository.cs" />
+    <Compile Include="IDataRepository.cs" />
+    <Compile Include="DummyRepository.cs" />
     <Compile Include="MemoryRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AbstrakteKlassen
 {
-    public class TextFileRepository : DataRepository
+    public class TextFileRepository : IDataRepository
     {
         private readonly string _fileName;
         private readonly string _name;
@@ -26,17 +26,17 @@ namespace AbstrakteKlassen
             get { return _fileName; }
         }
 
-        public override string Name
+        public string Name
         {
             get { return _name; }
         }
 
-        public override int MaxSize
+        public int MaxSize
         {
             get { return _maxSize; }
         }
 
-        public override string Read()
+        public string Read()
         {
             if (string.IsNullOrWhiteSpace(_fileName) || !File.Exists(_fileName))
             {
@@ -50,7 +50,7 @@ namespace AbstrakteKlassen
             }
         }
 
-        public override void Write(string data)
+        public void Write(string data)
         {
             //ToDo! Check maxSize of File!
 

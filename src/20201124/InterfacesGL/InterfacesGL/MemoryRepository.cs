@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AbstrakteKlassen
 {
-    public class MemoryRepository : DataRepository
+    public class MemoryRepository : IDataRepository
     {
         private readonly string _name;
         private readonly int _maxSize;
@@ -20,22 +20,22 @@ namespace AbstrakteKlassen
             _maxSize = maxSize;
         }
 
-        public override string Name
+        public string Name
         {
             get { return _name; }
         }
 
-        public override int MaxSize
+        public int MaxSize
         {
             get { return _maxSize; }
         }
 
-        public override string Read()
+        public string Read()
         {
             return _myMemory;
         }
 
-        public override void Write(string data)
+        public void Write(string data)
         {
             int countOfCharsToWrite = data.Length;
 

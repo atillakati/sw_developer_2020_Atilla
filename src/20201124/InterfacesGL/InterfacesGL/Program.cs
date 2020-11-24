@@ -10,11 +10,11 @@ namespace AbstrakteKlassen
     {
         static void Main(string[] args)
         {
-            DataRepository repository = new MemoryRepository(200);
-            //DataRepository repository = new TextFileRepository("myData.txt", 200);
+            IDataRepository repository = new MemoryRepository(15);
+            //IDataRepository repository = new TextFileRepository("myData.txt", 200);
 
             //daten speichern
-            PersistMyData(repository, "Hallo Welt! Dies ist eine Testdatensatz. ");
+            PersistMyData(repository, "C# ist sooo coool!");
 
             //daten lesen
             string myData = ReadMyData(repository);
@@ -23,7 +23,7 @@ namespace AbstrakteKlassen
             Console.WriteLine(myData);
         }
 
-        static string ReadMyData(DataRepository repository)
+        static string ReadMyData(IDataRepository repository)
         {
             if(repository != null)
             {
@@ -34,7 +34,7 @@ namespace AbstrakteKlassen
             return string.Empty;
         }
 
-        static void PersistMyData(DataRepository repository, string dataToPersist)
+        static void PersistMyData(IDataRepository repository, string dataToPersist)
         {
             if(repository != null)
             {
