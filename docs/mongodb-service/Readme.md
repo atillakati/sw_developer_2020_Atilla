@@ -23,3 +23,11 @@ docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 After starting the service, you have a graphical UI for maintain docker. Goto url http://{ip address}:9000/.
+
+## Installing mongodb-service
+To install and run, you can use the docker-compose file which is included in this folder. Enter following command to download and start mongodb-service:
+```
+docker-compose -f .\docker-compose.yaml up -d
+```
+
+![Docker-Compose Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/helloWorld.png)
