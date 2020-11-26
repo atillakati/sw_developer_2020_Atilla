@@ -10,4 +10,16 @@ Eventually you have to enter your dockerhub credentials.
 
 ![Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/helloWorld.png)
 
-To learn further details about what docker is about and how to use is, I can recomend following tutorial: https://www.youtube.com/watch?v=3c-iBn73dDE
+To learn further details about what docker is about and how to use it, I can recomend following tutorial: https://www.youtube.com/watch?v=3c-iBn73dDE
+
+## Installing portainer/portainer-ce
+Portainer is a lightweight management UI which allows you to easily manage your Docker AND Kubernetes clusters. Portainer is meant to be as simple to deploy as it is to use. It consists of a single container that can run on any Cluster.
+```
+docker pull portainer/portainer-ce
+```
+Start the portainer container with following settings:
+```
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+```
+After starting the service, you have a graphical UI for maintain docker. Goto url http://{ip address}:9000/.
