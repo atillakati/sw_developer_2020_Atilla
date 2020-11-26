@@ -8,5 +8,5 @@ Befor you can test your installation, you will need to sign in to https://hub.do
 - enter 'docker pull hello-world'
 Eventually you have to enter your dockerhub credentials.
 
-![Output](https://github.com/atillakati/sw_developer_2020_Atilla/new/main/docs/mongodb-service)
+![Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/helloWorld.png)
 
