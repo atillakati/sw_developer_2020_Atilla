@@ -31,3 +31,7 @@ docker-compose -f .\docker-compose.yaml up -d
 ```
 
 ![Docker-Compose Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/docker-compose_output.png)
+
+After the steps above you can go to portainer and navigate to container page. You will see mongodb and mongodb-express services are up and running:
+
+![portainer](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/portainer.png)
