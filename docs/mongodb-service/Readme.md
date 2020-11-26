@@ -30,4 +30,4 @@ To install and run, you can use the docker-compose file which is included in thi
 docker-compose -f .\docker-compose.yaml up -d
 ```
 
-![Docker-Compose Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/helloWorld.png)
+![Docker-Compose Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/docker-compose_output.png)
