@@ -10,3 +10,4 @@ Eventually you have to enter your dockerhub credentials.
 
 ![Output](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/mongodb-service/helloWorld.png)
 
+To learn further details about what docker is about and how to use is, I can recomend following tutorial: https://www.youtube.com/watch?v=3c-iBn73dDE
