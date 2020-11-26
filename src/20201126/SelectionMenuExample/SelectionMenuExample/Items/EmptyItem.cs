@@ -18,14 +18,14 @@ namespace SelectionMenuExample.Items
             get { return string.Empty; }
         }
 
-        public char Code
+        public ConsoleKey Code
         {
-            get { return ' '; }
+            get { return ConsoleKey.Spacebar; }
         }
 
         public void Display(int width)
         {
-            Console.WriteLine();
+            Console.WriteLine();            
         }
     }
 }

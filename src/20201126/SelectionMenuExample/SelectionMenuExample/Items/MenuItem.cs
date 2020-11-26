@@ -9,9 +9,9 @@ namespace SelectionMenuExample.Items
     public class MenuItem : IMenuItem
     {
         private string _description;
-        private char _code;
+        private ConsoleKey _code;
 
-        public MenuItem(string description, char code)
+        public MenuItem(string description, ConsoleKey code)
         {
             _description = description;
             _code = code;
@@ -22,7 +22,7 @@ namespace SelectionMenuExample.Items
             get { return _description; }
         }
 
-        public char Code
+        public ConsoleKey Code
         {
             get { return _code; }
         }

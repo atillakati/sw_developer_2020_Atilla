@@ -10,7 +10,7 @@ namespace SelectionMenuExample.Items
     {
         private ConsoleColor _itemColor;
 
-        public ColoredMenuItem(string description, char code, ConsoleColor itemColor)
+        public ColoredMenuItem(string description, ConsoleKey code, ConsoleColor itemColor)
             :base(description, code)
         {
             _itemColor = itemColor;

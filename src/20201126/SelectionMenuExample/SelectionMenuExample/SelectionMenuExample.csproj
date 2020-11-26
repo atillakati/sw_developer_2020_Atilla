@@ -48,6 +48,7 @@
     <Compile Include="Items\ColoredMenuItem.cs" />
     <Compile Include="Items\EmptyItem.cs" />
     <Compile Include="Items\MenuItem.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

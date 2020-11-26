@@ -13,5 +13,7 @@ namespace SelectionMenuExample
         void Add(IMenuItem menuItem);
         void Remove(IMenuItem menuItem);
         void Display(int width);
+
+        IMenuItem SelectItem(string inputPrompt);
     }
 }

@@ -1,9 +1,14 @@
-﻿namespace SelectionMenuExample
+﻿using System;
+
+namespace SelectionMenuExample
 {
     public interface IMenuItem
     {
         string Description { get; }
-        char Code { get; }
+        ConsoleKey Code { get; }
+
+        bool Selectable { get; set; }
+        bool Visible { get; set; }
 
 
         void Display(int width);
