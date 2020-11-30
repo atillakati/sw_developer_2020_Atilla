@@ -39,11 +39,6 @@ namespace SelectionMenuExample
             //}
         }
 
-        static int EineMethode(string something)
-        {
-            var isValid = true;
-
-
-        }
+        
     }
 }

@@ -8,9 +8,13 @@ namespace SelectionMenuExample.Items
 {
     public class EmptyItem : IMenuItem
     {
+        private bool _selectable;
+        private bool _visible;
+
         public EmptyItem()
         {
-            //nothing to do
+            _selectable = false;
+            _visible = true;
         }
 
         public string Description
@@ -23,9 +27,26 @@ namespace SelectionMenuExample.Items
             get { return ConsoleKey.Spacebar; }
         }
 
+        public bool Selectable 
+        { 
+            get { return _selectable; }
+            set 
+            {
+                //do nothing 
+            }
+        }
+        public bool Visible 
+        {
+            get { return _visible; }
+            set { _visible = value; } 
+        }
+
         public void Display(int width)
         {
-            Console.WriteLine();            
+            if (_visible)
+            {
+                Console.WriteLine();
+            }
         }
     }
 }

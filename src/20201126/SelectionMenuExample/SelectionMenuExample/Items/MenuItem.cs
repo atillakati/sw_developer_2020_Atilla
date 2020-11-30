@@ -10,11 +10,17 @@ namespace SelectionMenuExample.Items
     {
         private string _description;
         private ConsoleKey _code;
+        private bool _selectable;
+        private bool _visible;
+
 
         public MenuItem(string description, ConsoleKey code)
         {
             _description = description;
             _code = code;
+
+            _visible = true;
+            _selectable = true;
         }
         
         public string Description
@@ -27,11 +33,26 @@ namespace SelectionMenuExample.Items
             get { return _code; }
         }
 
+        public bool Selectable
+        {
+            get { return _selectable; }
+            set { _selectable = value; }
+        }
+
+        public bool Visible 
+        {
+            get { return _visible; }
+            set { _visible = value; } 
+        }
+
         public virtual void Display(int width)
         {
             //Daten laden...............L
             //Program beenden...........Q
-            Console.WriteLine($"{_description} {new string('.', width - _description.Length)} {_code}");
+            if (_visible)
+            {
+                Console.WriteLine($"{_description} {new string('.', width - _description.Length)} {_code}");
+            }
         }
     }
 }

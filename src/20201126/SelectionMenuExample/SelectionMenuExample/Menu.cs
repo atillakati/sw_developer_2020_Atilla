@@ -50,7 +50,7 @@ namespace SelectionMenuExample
 
                 foreach (var menuItem in _items)
                 {
-                    if (userInput.Key == menuItem.Code)
+                    if (userInput.Key == menuItem.Code && menuItem.Selectable)
                     {
                         return menuItem;
                     }
