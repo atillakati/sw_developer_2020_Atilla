@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,11 @@ namespace SelectionMenuExample.Items
         public bool Selectable 
         { 
             get { return _selectable; }
-            set 
-            {
-                //do nothing 
-            }
+            //set 
+            //{
+            //    _selectable = false;
+            //    Debug.WriteLine("Selectable für EmptyItem wird immer auf false gesetzt.");
+            //}
         }
         public bool Visible 
         {

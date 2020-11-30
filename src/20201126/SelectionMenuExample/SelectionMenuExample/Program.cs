@@ -27,16 +27,7 @@ namespace SelectionMenuExample
 
             var mySelection = myMenu.SelectItem("Ihre Wahl: ");
 
-            Console.WriteLine(mySelection.Description);
-            
-            //if(mySelection  == "daten laden")
-            //{
-            //    //tu was => daten sollen geladen werden
-            //}
-            //else if (mySelection == "daten speicher")
-            //{
-            //    //tu was => daten sollen gesichert werden
-            //}
+            Console.WriteLine($"\nIhre Auswahl: {mySelection.Description}");                        
         }
 
         

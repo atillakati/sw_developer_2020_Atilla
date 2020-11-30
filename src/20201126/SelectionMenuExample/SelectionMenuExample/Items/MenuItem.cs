@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample.Items
 {
-    public class MenuItem : IMenuItem
+    public class MenuItem : IMenuItemWithUpdateableSelectable
     {
         private string _description;
         private ConsoleKey _code;
@@ -35,8 +35,7 @@ namespace SelectionMenuExample.Items
 
         public bool Selectable
         {
-            get { return _selectable; }
-            set { _selectable = value; }
+            get { return _selectable; }           
         }
 
         public bool Visible 
@@ -53,6 +52,11 @@ namespace SelectionMenuExample.Items
             {
                 Console.WriteLine($"{_description} {new string('.', width - _description.Length)} {_code}");
             }
+        }
+
+        public void UpdateSelectable(bool newValue)
+        {
+            _selectable = newValue;
         }
     }
 }
