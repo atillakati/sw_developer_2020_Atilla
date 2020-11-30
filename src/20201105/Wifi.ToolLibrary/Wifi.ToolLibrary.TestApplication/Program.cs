@@ -12,13 +12,34 @@ namespace Wifi.ToolLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            RandomAdv rnd = new RandomAdv();
+            var geburtsJahr = ConsoleTools.GetInt("Bitte geben Sie Ihr Geburtsjahr ein: ", DoNothing);    
+            
+        }
 
-            Console.WriteLine($"Zufällige Zahl (1-10): {rnd.Next(1,11)}");
+        static void DoNothing(string errorMessage)
+        {
+            
+        }
 
-            Console.WriteLine($"Zufälliger String: {rnd.NextString(15)}");
-            Console.WriteLine($"Zufälliger String: {rnd.NextString(15)}");
-            Console.WriteLine($"Zufälliger String: {rnd.NextString(25)}");
+        static void DisplayInputError(string errorMessage)
+        {
+            ConsoleTools.DisplayColoredMessage(errorMessage, ConsoleColor.Red);
+        }
+
+        static void DisplayErrorOnLastLine(string errorMessage)
+        {
+            var oldYposition = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.WindowHeight - 3);
+
+            ConsoleTools.DisplayColoredMessage(errorMessage, ConsoleColor.Red);
+            Console.ReadLine();
+
+            //löschen der Fehlermeldung
+            Console.SetCursorPosition(0, Console.WindowHeight - 3);
+            Console.WriteLine(new string(' ', errorMessage.Length));
+
+            //cursor position wieder herstellen
+            Console.SetCursorPosition(0, oldYposition);
         }
     }
 }
