@@ -12,9 +12,4 @@ namespace SelectionMenuExample
 
         void Display(int width);
     }
-
-    public interface IMenuItemWithUpdateableSelectable : IMenuItem
-    {
-        void UpdateSelectable(bool newValue);
-    }
 }

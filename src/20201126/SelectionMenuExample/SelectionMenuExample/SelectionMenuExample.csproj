@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="IMenu.cs" />
     <Compile Include="IMenuItem.cs" />
+    <Compile Include="IMenuItemWithUpdateableSelectable.cs" />
     <Compile Include="Items\ColoredMenuItem.cs" />
     <Compile Include="Items\EmptyItem.cs" />
     <Compile Include="Items\MenuItem.cs" />
+    <Compile Include="Items\SeperatorItem.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
