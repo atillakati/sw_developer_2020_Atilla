@@ -11,33 +11,66 @@ namespace SelectionMenuExample
     {
         static void Main(string[] args)
         {
-            IMenu myMenu = new Menu();
-
-            //myMenu.LoadFromFile("menufile.txt");
-
+            ApplicationParameters applicationParameters = new ApplicationParameters();
+            IMenu<ApplicationParameters> myMenu = new Menu<ApplicationParameters>();
+            
+            //creat selection menu
             myMenu = CreateMenu();
 
-            myMenu.Display(35);
+            while (true)
+            {
+                Console.Clear();
+                myMenu.Display(35);
+                var mySelection = myMenu.SelectItem("Ihre Wahl: ");
 
-            var mySelection = myMenu.SelectItem("Ihre Wahl: ");
+                //Console.WriteLine($"\nIhre Auswahl: {mySelection.Description}");
 
-            Console.WriteLine($"\nIhre Auswahl: {mySelection.Description}");
+                //start execution
+                mySelection.Execute(applicationParameters);
+            }
         }
 
-        private static IMenu CreateMenu()
+        static IMenu<ApplicationParameters> CreateMenu()
         {
-            Menu myMenu = new Menu();
+            var myMenu = new Menu<ApplicationParameters>();
 
-            myMenu.Add(new MenuItem("Daten laden", ConsoleKey.F1));
-            myMenu.Add(new MenuItem("Daten speichern", ConsoleKey.F2));
-            myMenu.Add(new SeperatorItem('~'));
-            myMenu.Add(new MenuItem("Daten löschen", ConsoleKey.F3));
-            myMenu.Add(new MenuItem("Daten drucken", ConsoleKey.F4));
-            myMenu.Add(new EmptyItem());
-            myMenu.Add(new ColoredMenuItem("Ende", ConsoleKey.Escape, ConsoleColor.Yellow));
+            myMenu.Add(new MenuItem<ApplicationParameters>("Daten laden", ConsoleKey.F1, DatenLaden));
+            myMenu.Add(new MenuItem<ApplicationParameters>("Daten speichern", ConsoleKey.F2, DatenSpeichern));
+            myMenu.Add(new SeperatorItem<ApplicationParameters>('~'));
+            myMenu.Add(new MenuItem<ApplicationParameters>("Daten löschen", ConsoleKey.F3, DatenLoeschen));
+            myMenu.Add(new MenuItem<ApplicationParameters>("Daten drucken", ConsoleKey.F4, DatenDrucken));
+            myMenu.Add(new EmptyItem<ApplicationParameters>());
+            myMenu.Add(new ColoredMenuItem<ApplicationParameters>("Ende", ConsoleKey.Escape, ConsoleColor.Yellow, Ende));
 
             return myMenu;
         }
 
+
+
+        static void Ende(ApplicationParameters obj)
+        {
+            Environment.Exit(0);
+        }
+
+        static void DatenDrucken(ApplicationParameters obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void DatenLoeschen(ApplicationParameters obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void DatenSpeichern(ApplicationParameters obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        static void DatenLaden(ApplicationParameters obj)
+        {
+            Console.WriteLine($"\n\nDaten werden nun geladen....");
+            Console.ReadLine();
+        }
     }
 }

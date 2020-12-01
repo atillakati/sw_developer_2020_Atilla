@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample.Items
 {
-    public class SeperatorItem : MenuItem
+    public class SeperatorItem<T> : MenuItem<T>
     {
         private char _separator;
 
         public SeperatorItem(char separator) 
-            :base(string.Empty, ConsoleKey.Spacebar)
+            :base(string.Empty, ConsoleKey.Spacebar, null)
         {
             _separator = separator;
             UpdateSelectable(false);

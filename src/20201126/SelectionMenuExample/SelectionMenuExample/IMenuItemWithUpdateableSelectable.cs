@@ -1,6 +1,6 @@
 ﻿namespace SelectionMenuExample
 {
-    public interface IMenuItemWithUpdateableSelectable : IMenuItem
+    public interface IMenuItemWithUpdateableSelectable<T> : IMenuItem<T>
     {
         void UpdateSelectable(bool newValue);
     }

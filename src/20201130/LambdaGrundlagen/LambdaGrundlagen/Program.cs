@@ -16,7 +16,7 @@ namespace LambdaGrundlagen
             myAction("Hello Welt!");
 
             Action<string> myNewAction = DisplayMessage;
-            
+            //Func<string, int> myGetHandler = ConsoleTools.GetInt;
 
             //anonyme Methode (C# 2.0)
             myAction = delegate (string userText)

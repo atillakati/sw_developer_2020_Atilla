@@ -2,7 +2,7 @@
 
 namespace SelectionMenuExample
 {
-    public interface IMenuItem
+    public interface IMenuItem<T>
     {
         string Description { get; }
         ConsoleKey Code { get; }
@@ -11,5 +11,7 @@ namespace SelectionMenuExample
         bool Visible { get; set; }
 
         void Display(int width);
+
+        void Execute(T executionParameter);
     }
 }

@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample.Items
 {
-    public class MenuItem : IMenuItemWithUpdateableSelectable
+    public class MenuItem<T> : IMenuItemWithUpdateableSelectable<T>
     {
         private string _description;
         private ConsoleKey _code;
         private bool _selectable;
         private bool _visible;
+        private Action<T> _action;
 
 
-        public MenuItem(string description, ConsoleKey code)
+        public MenuItem(string description, ConsoleKey code, Action<T> action)
         {
             _description = description;
             _code = code;
+            _action = action;
 
             _visible = true;
             _selectable = true;
@@ -51,6 +53,14 @@ namespace SelectionMenuExample.Items
             if (_visible)
             {
                 Console.WriteLine($"{_description} {new string('.', width - _description.Length)} {_code}");
+            }
+        }
+
+        public void Execute(T executionParameter)
+        {
+            if (_action != null)
+            {
+                _action(executionParameter);
             }
         }
 

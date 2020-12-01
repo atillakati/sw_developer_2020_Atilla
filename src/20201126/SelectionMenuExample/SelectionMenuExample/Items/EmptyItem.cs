@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample.Items
 {
-    public class EmptyItem : IMenuItem
+    public class EmptyItem<T> : IMenuItem<T>
     {
         private bool _selectable;
         private bool _visible;
@@ -49,6 +49,11 @@ namespace SelectionMenuExample.Items
             {
                 Console.WriteLine();
             }
+        }
+
+        public void Execute(T executionParameter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SelectionMenuExample.Items
 {
-    public class ColoredMenuItem : MenuItem
+    public class ColoredMenuItem<T> : MenuItem<T>
     {
         private ConsoleColor _itemColor;
 
-        public ColoredMenuItem(string description, ConsoleKey code, ConsoleColor itemColor)
-            :base(description, code)
+        public ColoredMenuItem(string description, ConsoleKey code, ConsoleColor itemColor, Action<T> action)
+            :base(description, code, action)
         {
             _itemColor = itemColor;
         }
