@@ -83,5 +83,23 @@
   <ItemGroup>
     <None Include="Resources\newDocument.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_items.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

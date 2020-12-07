@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Wifi.PlaylistEditor.Types
 {
     public interface IPlaylistRepository
-    {
-
+    {        
     }
 }
