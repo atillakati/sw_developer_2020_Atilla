@@ -18,31 +18,46 @@ namespace Wifi.PlaylistEditor.Items
         {
             _filePath = filePath;
 
-            ReadIdv3TagsFromFile();            
+            if (string.IsNullOrWhiteSpace(_filePath) || !File.Exists(_filePath))
+            {
+                InitFieldsWithEmpty();
+            }
+            else
+            {
+                ReadIdv3TagsFromFile();
+            }
         }
-        
-        public string Title 
+
+        private void InitFieldsWithEmpty()
+        {
+            _artist = string.Empty;
+            _duration = TimeSpan.Zero;
+            _thumbnail = null;
+            _title = "--[File not found]--";
+        }
+
+        public string Title
         {
             get => _title;
             set => _title = value;
         }
-        public string Artist 
+        public string Artist
         {
             get => _artist;
             set => _artist = value;
         }
-        public TimeSpan Duration 
-        { 
+        public TimeSpan Duration
+        {
             get => _duration;
             set => _duration = value;
         }
-        public string Path 
+        public string Path
         {
             get => _filePath;
             set => _filePath = value;
         }
-        public Image Thumbnail 
-        { 
+        public Image Thumbnail
+        {
             get => _thumbnail;
             set => _thumbnail = value;
         }
@@ -50,9 +65,10 @@ namespace Wifi.PlaylistEditor.Items
         private void ReadIdv3TagsFromFile()
         {
             var tfile = TagLib.File.Create(_filePath);
+
             _title = tfile.Tag.Title;
             _duration = tfile.Properties.Duration;
-            _artist = tfile.Tag.FirstAlbumArtist;
+            _artist = tfile.Tag.FirstPerformer;
 
             if (tfile.Tag.Pictures != null && tfile.Tag.Pictures.Length > 0)
             {
