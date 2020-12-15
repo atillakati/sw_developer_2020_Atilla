@@ -52,10 +52,19 @@
     <Compile Include="frm_main.Designer.cs">
       <DependentUpon>frm_main.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaylistCreators\frm_newPlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaylistCreators\frm_newPlaylist.Designer.cs">
+      <DependentUpon>frm_newPlaylist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_main.resx">
       <DependentUpon>frm_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaylistCreators\frm_newPlaylist.resx">
+      <DependentUpon>frm_newPlaylist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +109,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clear_items.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj">
+      <Project>{17BE6E52-E6BD-4E1A-B26C-F6635426D46C}</Project>
+      <Name>Wifi.PlaylistEditor.Items</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
+      <Project>{D8CF8C6A-196E-43B6-90BA-0017F6B257DA}</Project>
+      <Name>Wifi.PlaylistEditor.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
