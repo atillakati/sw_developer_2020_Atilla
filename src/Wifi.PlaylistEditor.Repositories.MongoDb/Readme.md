@@ -20,3 +20,24 @@ Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer 
 ```
 nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
 ```
+
+## Laden von Playlist Dokumenten
+
+```C#
+//Repository instanziieren
+IDatabaseRepository mongoDbRepository = new MongoDbRepository(_playlistItemFactory);
+
+//alle Playlist Dokumente laden
+var names = mongoDbRepository.LoadAll();
+
+if (names != null)
+{
+    //Auswahldialog mit Playlistnamen versorgen und anzeigen
+    frm_databaseLoad formLoad = new frm_databaseLoad(names.Select(x => x.Title));
+    if(formLoad.ShowDialog() == DialogResult.OK)
+    {
+        //ein einzelnes Dokument über den Playlist Namen laden
+        _playlist = mongoDbRepository.Load(formLoad.SelectedPlaylistName);        
+    }
+}
+```
