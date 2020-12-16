@@ -1,7 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Wifi.PlaylistEditor.Types;
@@ -13,11 +15,24 @@ namespace Wifi.PlaylistEditor.Items.Tests
     {
         private IPlaylistItem _fixture;
 
+        private string _mp3WithThumbnailPath;
+        private string _mp3WithNoThumbnailPath;
+
+        [OneTimeSetUp]
+        public void InitTestFiles()
+        {
+            var path = Assembly.GetExecutingAssembly().Location;
+            path = Path.GetDirectoryName(path);
+
+            _mp3WithThumbnailPath = Path.Combine(path, @"Assets\001 - Bruno Mars - Grenade.mp3");
+            _mp3WithNoThumbnailPath = Path.Combine(path, @"Assets\002 - Lena - Taken By A Stranger.mp3");
+        }
+
 
         [SetUp]
         public void TestInit()
-        {
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
+        {            
+            _fixture = new Mp3Item(_mp3WithThumbnailPath);
         }
 
         [Test]
@@ -59,24 +74,19 @@ namespace Wifi.PlaylistEditor.Items.Tests
 
         [Test]
         public void GetPath()
-        {
-            var demoMp3Path = @"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3";
-
+        {            
             //arrange
 
             //act
             var path = _fixture.Path;
 
             //assert            
-            Assert.That(path, Is.EqualTo(demoMp3Path));
+            Assert.That(path, Is.EqualTo(_mp3WithThumbnailPath));
         }
-
 
         [Test]
         public void GetThumbnail()
-        {
-            var demoMp3Path = @"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3";
-
+        {            
             //arrange
 
             //act
@@ -88,11 +98,9 @@ namespace Wifi.PlaylistEditor.Items.Tests
 
         [Test]
         public void GetThumbnail_WithMp3FileWithNoImage()
-        {
-            var demoMp3Path = @"C:\Users\user\Music\TestMediaFiles\002 - Lena - Taken By A Stranger.mp3";
-             
+        {                         
             //arrange
-            _fixture = new Mp3Item(demoMp3Path);
+            _fixture = new Mp3Item(_mp3WithNoThumbnailPath);
 
             //act
             var thumbnail = _fixture.Thumbnail;
