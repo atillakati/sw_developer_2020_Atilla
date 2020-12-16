@@ -1,3 +1,4 @@
+![Wifi Campus logo](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/wifi_campus.PNG)
 # Install Docker Desktop on Windows
 To install Docker Desktop for Windows follow the steps mentioned here: https://docs.docker.com/docker-for-windows/install/
 
