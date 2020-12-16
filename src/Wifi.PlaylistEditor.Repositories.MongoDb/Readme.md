@@ -41,3 +41,11 @@ if (names != null)
     }
 }
 ```
+## Speichern von Playlist Dokumenten
+
+```C#
+IDatabaseRepository mongoDbRepository = new MongoDbRepository(_playlistItemFactory);
+
+mongoDbRepository.Save(_playlist.Title, _playlist);
+
+```
