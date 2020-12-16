@@ -103,11 +103,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wifi.PlaylistEditor.Types">
-      <HintPath>..\..\Wifi.PlaylistEditor\Wifi.PlaylistEditor.Types\bin\Debug\Wifi.PlaylistEditor.Types.dll</HintPath>
+    <Reference Include="Wifi.PlaylistEditor.Types, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Wifi.PlaylistEditor\Wifi.PlaylistEditor.Solution\Wifi.PlaylistEditor.Types\bin\Debug\Wifi.PlaylistEditor.Types.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IDatabaseRepository.cs" />
     <Compile Include="Mapper\EntityExtensions.cs" />
     <Compile Include="Entities\PlaylistEntity.cs" />
     <Compile Include="Entities\PlaylistItemEntity.cs" />
@@ -116,7 +118,7 @@
     <Compile Include="MongoDbRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ConfigurationReader.cs" />
-    <Compile Include="Settings\IConfigurationReader.cs" />
+    <Compile Include="Core\IConfigurationReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

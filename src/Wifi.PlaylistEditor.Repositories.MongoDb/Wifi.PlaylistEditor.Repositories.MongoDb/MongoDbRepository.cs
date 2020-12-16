@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 using Wifi.PlaylistEditor.Repositories.MongoDb.Driver;
 using Wifi.PlaylistEditor.Repositories.MongoDb.Entities;
 using Wifi.PlaylistEditor.Repositories.MongoDb.Mapper;
@@ -8,7 +9,7 @@ using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor.Repositories.MongoDb
 {
-    public class MongoDbRepository : IRepository
+    public class MongoDbRepository : IDatabaseRepository
     {
         private IDataProvider<PlaylistEntity> _provider;
         private IConfigurationReader _configurationReader;
@@ -32,19 +33,21 @@ namespace Wifi.PlaylistEditor.Repositories.MongoDb
 
             _provider = new MongoDbProvider<PlaylistEntity>(_connectionString, _dbName, _collectionName);
         }
-
-        private void ReadAppSettings()
-        {
-            _configurationReader = new ConfigurationReader();
-
-            _connectionString = _configurationReader.GetConfig("connectionString", _connectionString);
-            _dbName = _configurationReader.GetConfig("dbName", _dbName);
-            _collectionName = _configurationReader.GetConfig("collectionName", _collectionName);
-        }
+      
 
         public string Extension => ".mongodb";
 
         public string Description => "Store project data into MongoDb";
+
+        public IEnumerable<IPlaylist> LoadAll()
+        {
+            List<IPlaylist> playlists = new List<IPlaylist>();
+
+            playlists = _provider.LoadAllDocuments()?
+                                 .Select(x => x.MapToDomain(_playlistItemFactory))
+                                 .ToList();
+            return playlists;
+        }
 
         public IPlaylist Load(string filePath)
         {
@@ -82,15 +85,15 @@ namespace Wifi.PlaylistEditor.Repositories.MongoDb
                 _provider.InsertDocument(entity);
             }
         }
+       
 
-        public IEnumerable<IPlaylist> LoadAll()
+        private void ReadAppSettings()
         {
-            List<IPlaylist> playlists = new List<IPlaylist>();
+            _configurationReader = new ConfigurationReader();
 
-            playlists = _provider.LoadAllDocuments()?
-                                 .Select(x => x.MapToDomain(_playlistItemFactory))
-                                 .ToList();
-            return playlists;
+            _connectionString = _configurationReader.GetConfig("connectionString", _connectionString);
+            _dbName = _configurationReader.GetConfig("dbName", _dbName);
+            _collectionName = _configurationReader.GetConfig("collectionName", _collectionName);
         }
     }
 }

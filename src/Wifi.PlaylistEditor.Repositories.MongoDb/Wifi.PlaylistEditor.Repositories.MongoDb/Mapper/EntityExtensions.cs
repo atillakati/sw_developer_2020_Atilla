@@ -12,7 +12,7 @@ namespace Wifi.PlaylistEditor.Repositories.MongoDb.Mapper
     {
         public static IPlaylist MapToDomain(this PlaylistEntity entity, IPlaylistItemFactory playlistItemFactory)
         {
-            IPlaylist playlist = new Playlist(entity.Title, entity.Author);
+            IPlaylist playlist = new Playlist(entity.Title, entity.Author, entity.CreatedAt);
 
             foreach (var item in entity.Items)
             {

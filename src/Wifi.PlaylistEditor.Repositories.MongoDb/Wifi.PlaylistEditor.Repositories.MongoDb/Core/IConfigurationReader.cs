@@ -1,4 +1,4 @@
-﻿namespace Wifi.PlaylistEditor.Repositories.MongoDb.Settings
+﻿namespace Wifi.PlaylistEditor.Repositories.MongoDb.Core
 {
     public interface IConfigurationReader
     {
