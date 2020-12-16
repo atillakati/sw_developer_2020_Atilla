@@ -8,7 +8,7 @@
 	<owners>$author$</owners>        
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service</projectUrl>
+    <projectUrl>https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/src/Wifi.PlaylistEditor.Repositories.MongoDb</projectUrl>
     <iconUrl>https://vlbg.wifi.at/assets/img/favicons/favicon-96x96.png</iconUrl>
     <description>A simple nuget with required assemblies for accessing a mongo database</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
