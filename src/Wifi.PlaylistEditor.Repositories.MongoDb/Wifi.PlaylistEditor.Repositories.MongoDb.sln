@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Repositories.MongoDb", "Wifi.PlaylistEditor.Repositories.MongoDb\Wifi.PlaylistEditor.Repositories.MongoDb.csproj", "{7BC2E383-05E5-44FD-861D-EB132DBF81C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.PlaylistEditor.Repositories.MongoDb.Tests", "Wifi.PlaylistEditor.Repositories.MongoDb.Tests\Wifi.PlaylistEditor.Repositories.MongoDb.Tests.csproj", "{A0775F43-7C93-4150-988F-BFC3E4C2ABBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BC2E383-05E5-44FD-861D-EB132DBF81C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC2E383-05E5-44FD-861D-EB132DBF81C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC2E383-05E5-44FD-861D-EB132DBF81C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC2E383-05E5-44FD-861D-EB132DBF81C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0775F43-7C93-4150-988F-BFC3E4C2ABBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0775F43-7C93-4150-988F-BFC3E4C2ABBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0775F43-7C93-4150-988F-BFC3E4C2ABBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0775F43-7C93-4150-988F-BFC3E4C2ABBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA1F9B51-0EA5-4977-BD21-5CE84E81BFC2}
+	EndGlobalSection
+EndGlobal

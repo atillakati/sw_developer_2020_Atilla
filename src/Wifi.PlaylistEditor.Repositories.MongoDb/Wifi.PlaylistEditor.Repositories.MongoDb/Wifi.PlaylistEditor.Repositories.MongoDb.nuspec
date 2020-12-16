@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.3.3</version>
+    <title>$title$</title>
+    <authors>Atilla Kati @ Wifi</authors>
+	<owners>$author$</owners>        
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service</projectUrl>
+    <iconUrl>https://vlbg.wifi.at/assets/img/favicons/favicon-96x96.png</iconUrl>
+    <description>A simple nuget with required assemblies for accessing a mongo database</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>WIFI mongodb</tags>
+  </metadata>
+</package>
