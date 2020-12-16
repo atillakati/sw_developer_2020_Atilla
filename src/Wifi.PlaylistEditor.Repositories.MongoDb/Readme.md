@@ -4,23 +4,18 @@ Eine MongoDb Anbindung an unser PlaylistEditor Tool
 
 ## Die app.config
 
-```C#
-using System;
-
-namespace HelloWorld.Beispiel
-{
-	public class MyApp
-	{
-		public static void Main()
-		{
-			Console.WriteLine("Hallo zusammen... Hello World!");
-			Console.ReadLine();
-		}
-	}	
-}
+```
+<appSettings>
+    <add key="connectionString" value="mongodb://admin:password@192.168.10.200:27017" />
+    <add key="dbName" value="PlaylistDb" />
+    <add key="collectionName" value="PlaylistCollection" />
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+</appSettings>
 ```
 
 ## Nuget erstellen
+
+Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer im AssemblyInfo.cs und in der .nuspec Datei müssen aktualisiert werden.
 
 ```
 nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
