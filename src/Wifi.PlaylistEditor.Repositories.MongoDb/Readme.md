@@ -1,6 +1,14 @@
 ![Wifi Campus logo](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/wifi_campus.PNG)
 # Wifi.PlaylistEditor.Repositories.MongoDb
-Eine MongoDb Anbindung an unser PlaylistEditor Tool
+Eine MongoDb Anbindung an unser PlaylistEditor Tool.
+
+## Nuget erstellen
+
+Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer im AssemblyInfo.cs und in der .nuspec Datei müssen aktualisiert werden.
+
+```
+nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
+```
 
 ## Die app.config
 
@@ -11,14 +19,6 @@ Eine MongoDb Anbindung an unser PlaylistEditor Tool
     <add key="collectionName" value="PlaylistCollection" />
     <add key="ClientSettingsProvider.ServiceUri" value="" />
 </appSettings>
-```
-
-## Nuget erstellen
-
-Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer im AssemblyInfo.cs und in der .nuspec Datei müssen aktualisiert werden.
-
-```
-nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
 ```
 
 ## Laden von Playlist Dokumenten
