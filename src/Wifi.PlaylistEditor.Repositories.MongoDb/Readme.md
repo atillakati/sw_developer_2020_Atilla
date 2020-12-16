@@ -2,7 +2,7 @@
 # Wifi.PlaylistEditor.Repositories.MongoDb
 Eine MongoDb Anbindung an unser PlaylistEditor Tool.
 Die Bereitstellung und einrichtung der MongoDb Umgebung ist hier beschrieben:
-![Beschreibung Einrichtung MongoDB mit Docker](https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service)
+https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service
 
 ## Nuget erstellen
 
