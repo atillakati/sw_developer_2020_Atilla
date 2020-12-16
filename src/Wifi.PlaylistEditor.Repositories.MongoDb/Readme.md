@@ -4,7 +4,7 @@ Eine MongoDb Anbindung an unser PlaylistEditor Tool
 
 ## Die app.config
 
-```
+```config
 <appSettings>
     <add key="connectionString" value="mongodb://admin:password@192.168.10.200:27017" />
     <add key="dbName" value="PlaylistDb" />
