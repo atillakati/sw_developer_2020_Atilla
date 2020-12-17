@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using Wifi.PlaylistEditor.Properties;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -33,6 +33,7 @@ namespace Wifi.PlaylistEditor
             _playlist = new Playlist(title, author, DateTime.Now);
 
             //update view
+            EnableItemCommands(true);
             DisplayPlaylistDetails(_playlist);
             DisplayPlaylistItems(_playlist);
         }
@@ -49,7 +50,15 @@ namespace Wifi.PlaylistEditor
                 ListViewItem lvi = new ListViewItem(item.ToString());
                 lvi.ImageIndex = index;
                 lvi.Tag = item;
-                imageList1.Images.Add(item.Thumbnail);
+
+                if (item.Thumbnail != null)
+                {
+                    imageList1.Images.Add(item.Thumbnail);
+                }
+                else
+                {
+                    imageList1.Images.Add(Resources.no_image);
+                }
 
                 listView1.Items.Add(lvi);
                 index++;
@@ -84,6 +93,35 @@ namespace Wifi.PlaylistEditor
             //update view
             DisplayPlaylistDetails(_playlist);
             DisplayPlaylistItems(_playlist);
+        }
+
+        private void frm_main_Load(object sender, EventArgs e)
+        {
+            lbl_playlistTitle.Text = string.Empty;            
+            lbl_playlistDetails.Text = "Spielzeit: 00:00:00 | Autor: -";
+
+            EnableItemCommands(false);
+        }
+
+        private void EnableItemCommands(bool enabled)
+        {
+            toolStripButton4.Enabled = enabled;
+            toolStripButton5.Enabled = enabled;
+            toolStripButton6.Enabled = enabled;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                var playlistItem = item.Tag as IPlaylistItem;
+                if(playlistItem != null)
+                {
+                    //Artist: Max Sänger | Titel: Cooler Song | Dauer: 00:05:25 | c:\temp\mySongs\coolerSong.mp3
+                    lbl_itemDetails.Text = $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} " +
+                                           $"| Dauer: {playlistItem.Duration.ToString("hh\\:mm\\:ss")} | {playlistItem.Path}";
+                }
+            }
         }
     }
 }
