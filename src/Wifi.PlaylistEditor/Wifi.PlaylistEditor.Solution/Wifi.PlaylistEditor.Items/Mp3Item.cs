@@ -62,6 +62,11 @@ namespace Wifi.PlaylistEditor.Items
             set => _thumbnail = value;
         }
 
+        public override string ToString()
+        {
+            return $"{_artist} - {_title}";
+        }
+
         private void ReadIdv3TagsFromFile()
         {
             var tfile = TagLib.File.Create(_filePath);
