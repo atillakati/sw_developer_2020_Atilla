@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Wifi.PlaylistEditor.Items;
+
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -15,23 +8,26 @@ namespace Wifi.PlaylistEditor
     public partial class frm_main : Form
     {
         private IPlaylist _playlist;
+        private readonly INewPlaylistCreator _newPlaylistCreator;
+        private IPlaylistItemFactory _playlistItemFactory;
 
-        public frm_main()
+        public frm_main(INewPlaylistCreator newPlaylistCreator, IPlaylistItemFactory playlistItemFactory)
         {
             InitializeComponent();
+
+            _newPlaylistCreator = newPlaylistCreator;
+            _playlistItemFactory = playlistItemFactory;
         }
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
-        {
-            frm_newPlaylist newPlaylistDialog = new frm_newPlaylist();
-
-            if(newPlaylistDialog.ShowDialog() != DialogResult.OK)
+        {            
+            if(_newPlaylistCreator.StartDialog() != DialogResult.OK)
             {
                 return;
-            }
+            }            
 
-            var title = newPlaylistDialog.Title;
-            var author = newPlaylistDialog.Author;
+            var title = _newPlaylistCreator.Title;
+            var author = _newPlaylistCreator.Author;
 
             //now create new playlist
             _playlist = new Playlist(title, author, DateTime.Now);
@@ -78,8 +74,11 @@ namespace Wifi.PlaylistEditor
 
             foreach (var file in openFileDialog1.FileNames)
             {
-                var item = new Mp3Item(file);
-                _playlist.Add(item);
+                var item = _playlistItemFactory.Create(file);
+                if (item != null)
+                {
+                    _playlist.Add(item);
+                }
             }
 
             //update view

@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +47,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frm_main.cs">
@@ -52,12 +61,14 @@
     <Compile Include="frm_main.Designer.cs">
       <DependentUpon>frm_main.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaylistCreators\DummyCreator.cs" />
     <Compile Include="PlaylistCreators\frm_newPlaylist.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlaylistCreators\frm_newPlaylist.Designer.cs">
       <DependentUpon>frm_newPlaylist.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaylistCreators\INewPlaylistCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_main.resx">
@@ -76,6 +87,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -111,9 +123,9 @@
     <None Include="Resources\clear_items.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj">
-      <Project>{17BE6E52-E6BD-4E1A-B26C-F6635426D46C}</Project>
-      <Name>Wifi.PlaylistEditor.Items</Name>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Factories\Wifi.PlaylistEditor.Factories.csproj">
+      <Project>{762e69a7-d361-415e-924f-adc7287cea8a}</Project>
+      <Name>Wifi.PlaylistEditor.Factories</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
       <Project>{D8CF8C6A-196E-43B6-90BA-0017F6B257DA}</Project>
