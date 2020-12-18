@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
+      <Project>{d8cf8c6a-196e-43b6-90ba-0017f6b257da}</Project>
+      <Name>Wifi.PlaylistEditor.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
