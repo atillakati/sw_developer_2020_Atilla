@@ -19,20 +19,21 @@ namespace Wifi.PlaylistEditor.Repositories
             _playlistItemFactory = playlistItemFactory;
         }
 
+
         public string Extension => ".m3u";
 
-        public string Description => "Music files";
+        public string Description => "m3u Playlist file";
 
         public IPlaylist Load(string filePath)
         {
-            IPlaylist playlist = null;            
+            IPlaylist playlist = null;
             M3uPlaylist m3uplaylistBase = null;
 
             if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
             {
                 return null;
             }
-            
+
             //open file and read content
             using (StreamReader sr = new StreamReader(filePath))
             {
@@ -59,7 +60,7 @@ namespace Wifi.PlaylistEditor.Repositories
             string text = content.ToText(m3uPlaylist);
 
             //write into file
-            using(StreamWriter sw = new StreamWriter(filePath, false))
+            using (StreamWriter sw = new StreamWriter(filePath, false))
             {
                 sw.WriteLine(text);
             }
@@ -67,10 +68,11 @@ namespace Wifi.PlaylistEditor.Repositories
             return;
         }
 
+
         private M3uPlaylist MapToEntity(IPlaylist playlist)
         {
             M3uPlaylist m3uPlaylist = new M3uPlaylist();
-            m3uPlaylist.IsExtended = true;            
+            m3uPlaylist.IsExtended = true;
 
             m3uPlaylist.Comments.Add($"PLAYLIST-Author:{playlist.Author}");
             m3uPlaylist.Comments.Add($"PLAYLIST-Title:{playlist.Name}");
@@ -89,7 +91,7 @@ namespace Wifi.PlaylistEditor.Repositories
 
                 m3uPlaylist.PlaylistEntries.Add(entry);
             }
-            
+
             return m3uPlaylist;
         }
 
@@ -128,7 +130,7 @@ namespace Wifi.PlaylistEditor.Repositories
 
             foreach (var entry in playlistEntries)
             {
-                if(entry.Comments != null && entry.Comments.Count > 0)
+                if (entry.Comments != null && entry.Comments.Count > 0)
                 {
                     commentList.AddRange(entry.Comments);
                 }
@@ -144,7 +146,7 @@ namespace Wifi.PlaylistEditor.Repositories
                 if (comment.StartsWith(key))
                 {
                     var parts = comment.Split(':');
-                    if(parts.Length == 2)
+                    if (parts.Length == 2)
                     {
                         return parts[1].Trim();
                     }
@@ -152,6 +154,6 @@ namespace Wifi.PlaylistEditor.Repositories
             }
 
             return defaultValue;
-        }      
+        }
     }
 }

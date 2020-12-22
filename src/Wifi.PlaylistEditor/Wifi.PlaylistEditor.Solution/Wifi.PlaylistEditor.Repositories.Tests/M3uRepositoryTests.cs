@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,7 +75,7 @@ namespace Wifi.PlaylistEditor.Repositories.Tests
             var description = _fixture.Description;
 
             //assert
-            Assert.That(description, Is.EqualTo("Music files"));
+            Assert.That(description, Is.EqualTo("m3u Playlist file"));
         }
 
         [Test]
@@ -87,6 +88,7 @@ namespace Wifi.PlaylistEditor.Repositories.Tests
             _fixture.Save(@"c:\temp\myMegahits2020.m3u", _mockedPlaylist.Object);
 
             //assert   
+            Assert.That(File.Exists(@"c:\temp\myMegahits2020.m3u"), Is.True);
             Assert.That(_mockedPlaylist.Object.Count, Is.EqualTo(2));
         }
 
@@ -131,6 +133,7 @@ namespace Wifi.PlaylistEditor.Repositories.Tests
             //assign            
             _mockedPlaylist.Setup(x => x.Items).Returns(new IPlaylistItem[0]);
             _mockedPlaylist.Setup(x => x.Duration).Returns(TimeSpan.Zero);
+            _mockedPlaylist.Setup(x => x.Count).Returns(0);
 
             _fixture = new M3uRepository(_mockedPlaylistItemFactory.Object);
 
