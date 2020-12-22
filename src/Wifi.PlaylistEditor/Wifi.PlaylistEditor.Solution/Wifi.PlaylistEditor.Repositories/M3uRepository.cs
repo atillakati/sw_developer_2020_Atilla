@@ -19,32 +19,28 @@ namespace Wifi.PlaylistEditor.Repositories
             _playlistItemFactory = playlistItemFactory;
         }
 
-        public string Extension => ".mp3";
+        public string Extension => ".m3u";
 
         public string Description => "Music files";
 
         public IPlaylist Load(string filePath)
         {
-            IPlaylist playlist = null;
-            IBasePlaylist playlistBase = null;
+            IPlaylist playlist = null;            
+            M3uPlaylist m3uplaylistBase = null;
 
             if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
             {
                 return null;
             }
-
+            
             //open file and read content
             using (StreamReader sr = new StreamReader(filePath))
             {
-                var parser = PlaylistParserFactory.GetPlaylistParser(Extension);
-                playlistBase = parser.GetFromStream(sr.BaseStream);
-            }            
-            
-            M3uPlaylist m3uplaylistBase = playlistBase as M3uPlaylist;
-            if(m3uplaylistBase == null)
-            {
-                return null;
+                M3uContent content = new M3uContent();
+                m3uplaylistBase = content.GetFromStream(sr.BaseStream);
             }
+
+            m3uplaylistBase.Path = filePath;
 
             //map to IPlaylist type
             playlist = MapToDomain(m3uplaylistBase);
@@ -74,25 +70,26 @@ namespace Wifi.PlaylistEditor.Repositories
         private M3uPlaylist MapToEntity(IPlaylist playlist)
         {
             M3uPlaylist m3uPlaylist = new M3uPlaylist();
-            m3uPlaylist.IsExtended = true;
+            m3uPlaylist.IsExtended = true;            
+
+            m3uPlaylist.Comments.Add($"PLAYLIST-Author:{playlist.Author}");
+            m3uPlaylist.Comments.Add($"PLAYLIST-Title:{playlist.Name}");
+            m3uPlaylist.Comments.Add($"PLAYLIST-CreatedAt:{playlist.CreatedAt.ToShortDateString()}");
 
             foreach (var item in playlist.Items)
             {
                 var entry = new M3uPlaylistEntry()
                 {
-                    AlbumArtist = item.Artist,
+                    //AlbumArtist = item.Artist,
                     Duration = item.Duration,
                     Path = item.Path,
                     Title = item.Title,
+                    Comments = new List<string>(),
                 };
 
                 m3uPlaylist.PlaylistEntries.Add(entry);
             }
-
-            m3uPlaylist.Comments.Add($"#Author:{playlist.Author}");
-            m3uPlaylist.Comments.Add($"#Title:{playlist.Name}");
-            m3uPlaylist.Comments.Add($"#CreatedAt:{playlist.CreatedAt.ToShortDateString()}");
-
+            
             return m3uPlaylist;
         }
 
@@ -100,10 +97,13 @@ namespace Wifi.PlaylistEditor.Repositories
         {
             IPlaylist playlist = null;
 
+            //get all comments
+            var commentList = ExtractAllComments(m3uplaylistBase.PlaylistEntries);
+
             //get meta data
-            var author = GetValueFromComment("Author", m3uplaylistBase.Comments, "NoName");
-            var title = GetValueFromComment("Title", m3uplaylistBase.Comments, Path.GetFileNameWithoutExtension(m3uplaylistBase.Path));
-            var createdAt = GetValueFromComment("CreatedAt", m3uplaylistBase.Comments, File.GetCreationTime(m3uplaylistBase.Path).ToShortDateString());
+            var author = GetValueFromComment("PLAYLIST-Author", commentList, "NoName");
+            var title = GetValueFromComment("PLAYLIST-Title", commentList, Path.GetFileNameWithoutExtension(m3uplaylistBase.Path));
+            var createdAt = GetValueFromComment("PLAYLIST-CreatedAt", commentList, File.GetCreationTime(m3uplaylistBase.Path).ToShortDateString());
 
             //get item paths
             List<string> paths = m3uplaylistBase.GetTracksPaths();
@@ -122,8 +122,35 @@ namespace Wifi.PlaylistEditor.Repositories
             return playlist;
         }
 
+        private IEnumerable<string> ExtractAllComments(IEnumerable<M3uPlaylistEntry> playlistEntries)
+        {
+            List<string> commentList = new List<string>();
+
+            foreach (var entry in playlistEntries)
+            {
+                if(entry.Comments != null && entry.Comments.Count > 0)
+                {
+                    commentList.AddRange(entry.Comments);
+                }
+            }
+
+            return commentList;
+        }
+
         private string GetValueFromComment(string key, IEnumerable<string> comments, string defaultValue)
         {
+            foreach (var comment in comments)
+            {
+                if (comment.StartsWith(key))
+                {
+                    var parts = comment.Split(':');
+                    if(parts.Length == 2)
+                    {
+                        return parts[1].Trim();
+                    }
+                }
+            }
+
             return defaultValue;
         }      
     }
