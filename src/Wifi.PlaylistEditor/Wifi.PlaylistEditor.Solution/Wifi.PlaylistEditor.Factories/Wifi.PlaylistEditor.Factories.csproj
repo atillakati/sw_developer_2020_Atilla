@@ -43,11 +43,16 @@
   <ItemGroup>
     <Compile Include="PlaylistItemFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Items\Wifi.PlaylistEditor.Items.csproj">
       <Project>{17be6e52-e6bd-4e1a-b26c-f6635426d46c}</Project>
       <Name>Wifi.PlaylistEditor.Items</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wifi.PlaylistEditor.Repositories\Wifi.PlaylistEditor.Repositories.csproj">
+      <Project>{cd385201-9d00-4dad-ab5f-0e2bbb174c45}</Project>
+      <Name>Wifi.PlaylistEditor.Repositories</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wifi.PlaylistEditor.Types\Wifi.PlaylistEditor.Types.csproj">
       <Project>{d8cf8c6a-196e-43b6-90ba-0017f6b257da}</Project>
