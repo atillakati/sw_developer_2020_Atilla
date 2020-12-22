@@ -68,12 +68,18 @@ namespace Wifi.PlaylistEditor.Types
 
         public void Add(IPlaylistItem newItem)
         {
-            _items.Add(newItem);
+            if (newItem != null)
+            {
+                _items.Add(newItem);
+            }
         }
 
         public void Remove(IPlaylistItem itemToRemove)
         {
-            _items.Remove(itemToRemove);
+            if (itemToRemove != null)
+            {
+                _items.Remove(itemToRemove);
+            }
         }
 
         public void ClearAllItems()
