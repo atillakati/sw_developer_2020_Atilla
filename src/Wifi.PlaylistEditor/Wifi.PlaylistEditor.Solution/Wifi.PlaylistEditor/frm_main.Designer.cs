@@ -47,6 +47,7 @@ namespace Wifi.PlaylistEditor
             this.lbl_itemDetails = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +109,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton2.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.ToolTipText = "Playlist laden";
+            this.toolStripButton2.Click += new System.EventHandler(this.LoadPlaylistFromFile_Click);
             // 
             // toolStripButton3
             // 
@@ -118,6 +120,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton3.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton3.Text = "toolStripButton3";
             this.toolStripButton3.ToolTipText = "Playlist sichern";
+            this.toolStripButton3.Click += new System.EventHandler(this.SavePlaylistAsFile_Click);
             // 
             // toolStripSeparator2
             // 
@@ -252,6 +255,7 @@ namespace Wifi.PlaylistEditor
         private System.Windows.Forms.Label lbl_itemDetails;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

@@ -9,14 +9,18 @@ namespace Wifi.PlaylistEditor
     {
         private IPlaylist _playlist;
         private readonly INewPlaylistCreator _newPlaylistCreator;
-        private IPlaylistItemFactory _playlistItemFactory;
+        private readonly IPlaylistItemFactory _playlistItemFactory;
+        private readonly IRepositoryFactory _repositoryFactory;
 
-        public frm_main(INewPlaylistCreator newPlaylistCreator, IPlaylistItemFactory playlistItemFactory)
+        public frm_main(INewPlaylistCreator newPlaylistCreator, 
+                        IPlaylistItemFactory playlistItemFactory,
+                        IRepositoryFactory repositoryFactory)
         {
             InitializeComponent();
 
             _newPlaylistCreator = newPlaylistCreator;
             _playlistItemFactory = playlistItemFactory;
+            _repositoryFactory = repositoryFactory;
         }
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
@@ -154,6 +158,41 @@ namespace Wifi.PlaylistEditor
             lbl_itemDetails.Text = string.Empty;
             DisplayPlaylistDetails(_playlist);
             DisplayPlaylistItems(_playlist);
+        }
+
+        private void SavePlaylistAsFile_Click(object sender, EventArgs e)
+        {
+            if(saveFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
+            if(repository != null)
+            {
+                repository.Save(saveFileDialog1.FileName, _playlist);
+            }
+        }
+
+        private void LoadPlaylistFromFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            IRepository repository = _repositoryFactory.Create(openFileDialog1.FileName);
+            if (repository != null)
+            {
+                _playlist = repository.Load(openFileDialog1.FileName);
+
+                //update view
+                lbl_itemDetails.Text = string.Empty;
+                DisplayPlaylistDetails(_playlist);
+                DisplayPlaylistItems(_playlist);
+
+                EnableItemCommands(true);
+            }
         }
     }
 }

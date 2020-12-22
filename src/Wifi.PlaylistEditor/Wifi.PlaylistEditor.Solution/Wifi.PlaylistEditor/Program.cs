@@ -27,6 +27,7 @@ namespace Wifi.PlaylistEditor
             //Typen registrieren
             container.RegisterType<INewPlaylistCreator, DummyCreator>();
             container.RegisterType<IPlaylistItemFactory, PlaylistItemFactory>();
+            container.RegisterType<IRepositoryFactory, RepositoryFactory>();
             
             Application.Run(container.Resolve<frm_main>());
         }
