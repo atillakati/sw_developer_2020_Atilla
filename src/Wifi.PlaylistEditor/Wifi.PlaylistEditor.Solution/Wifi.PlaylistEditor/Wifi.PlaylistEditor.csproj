@@ -135,5 +135,11 @@
   <ItemGroup>
     <None Include="Resources\no-image.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load-database-icon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
