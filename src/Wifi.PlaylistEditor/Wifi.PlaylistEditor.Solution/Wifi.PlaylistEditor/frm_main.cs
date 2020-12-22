@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using Wifi.PlaylistEditor.Forms;
 using Wifi.PlaylistEditor.Properties;
+using Wifi.PlaylistEditor.Repositories.MongoDb;
+using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -192,6 +196,40 @@ namespace Wifi.PlaylistEditor
                 DisplayPlaylistItems(_playlist);
 
                 EnableItemCommands(true);
+            }
+        }
+
+        private void SaveProjectIntoDB_Click(object sender, EventArgs e)
+        {
+            IDatabaseRepository databaseRepository = new MongoDbRepository(_playlistItemFactory);
+
+            databaseRepository.Save(_playlist.Name, _playlist);
+            MessageBox.Show("Playlist wurde gespeichert.");
+        }
+
+        private void LoadProjectFormDb_Click(object sender, EventArgs e)
+        {
+            IDatabaseRepository mongoDbRepository = new MongoDbRepository(_playlistItemFactory);
+
+            //alle Playlist Dokumente laden
+            var names = mongoDbRepository.LoadAll();
+
+            if (names != null)
+            {
+                //Auswahldialog mit Playlistnamen versorgen und anzeigen
+                IDatabaseLoadDialog formLoad = new frm_databaseLoad();
+                if (formLoad.ShowDialog(names.Select(x => x.Name)) == DialogResult.OK)
+                {
+                    //ein einzelnes Dokument über den Playlist Namen laden
+                    _playlist = mongoDbRepository.Load(formLoad.SelectedPlaylistName);
+
+                    //update view
+                    lbl_itemDetails.Text = string.Empty;
+                    DisplayPlaylistDetails(_playlist);
+                    DisplayPlaylistItems(_playlist);
+
+                    EnableItemCommands(true);
+                }
             }
         }
     }

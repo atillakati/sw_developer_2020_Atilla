@@ -62,6 +62,10 @@ namespace Wifi.PlaylistEditor.Items
             set => _thumbnail = value;
         }
 
+        public string Extension => ".mp3";
+
+        public string Description => "MP3 Music file";
+
         public override string ToString()
         {
             return $"{_artist} - {_title}";

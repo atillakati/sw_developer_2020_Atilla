@@ -25,7 +25,7 @@ namespace Wifi.PlaylistEditor
             var container = new UnityContainer();
 
             //Typen registrieren
-            container.RegisterType<INewPlaylistCreator, DummyCreator>();
+            container.RegisterType<INewPlaylistCreator, frm_newPlaylist>();
             container.RegisterType<IPlaylistItemFactory, PlaylistItemFactory>();
             container.RegisterType<IRepositoryFactory, RepositoryFactory>();
             

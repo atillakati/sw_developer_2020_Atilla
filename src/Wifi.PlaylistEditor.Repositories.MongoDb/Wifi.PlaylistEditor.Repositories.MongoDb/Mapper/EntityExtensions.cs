@@ -28,7 +28,7 @@ namespace Wifi.PlaylistEditor.Repositories.MongoDb.Mapper
             var entity = new PlaylistItemEntity()
             {
                 Extension = playlistItem.Extension,
-                FilePath = playlistItem.FilePath
+                FilePath = playlistItem.Path,
             };
 
             return entity;
@@ -41,7 +41,7 @@ namespace Wifi.PlaylistEditor.Repositories.MongoDb.Mapper
                 Id = Guid.NewGuid(),
                 Author = playlist.Author,
                 CreatedAt = playlist.CreatedAt,
-                Title = playlist.Title,
+                Title = playlist.Name,
                 Items = playlist.Items.Select(x => x.MapToEntity()),
                 FilePath = filePath
             };

@@ -33,8 +33,16 @@ namespace Wifi.PlaylistEditor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             this.listView1 = new System.Windows.Forms.ListView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_playlistDetails = new System.Windows.Forms.Label();
             this.lbl_playlistTitle = new System.Windows.Forms.Label();
@@ -42,14 +50,6 @@ namespace Wifi.PlaylistEditor
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,70 +88,6 @@ namespace Wifi.PlaylistEditor
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(34, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(34, 6);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lbl_playlistDetails);
-            this.panel1.Controls.Add(this.lbl_playlistTitle);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(37, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(876, 118);
-            this.panel1.TabIndex = 2;
-            // 
-            // lbl_playlistDetails
-            // 
-            this.lbl_playlistDetails.AutoSize = true;
-            this.lbl_playlistDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playlistDetails.Location = new System.Drawing.Point(27, 76);
-            this.lbl_playlistDetails.Name = "lbl_playlistDetails";
-            this.lbl_playlistDetails.Size = new System.Drawing.Size(375, 24);
-            this.lbl_playlistDetails.TabIndex = 1;
-            this.lbl_playlistDetails.Text = "Spielzeit: 00:15:12 | Autor: Max Mustermann";
-            // 
-            // lbl_playlistTitle
-            // 
-            this.lbl_playlistTitle.AutoSize = true;
-            this.lbl_playlistTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_playlistTitle.Location = new System.Drawing.Point(24, 24);
-            this.lbl_playlistTitle.Name = "lbl_playlistTitle";
-            this.lbl_playlistTitle.Size = new System.Drawing.Size(424, 39);
-            this.lbl_playlistTitle.TabIndex = 0;
-            this.lbl_playlistTitle.Text = "Demoplaylist Charts 1980 ";
-            // 
-            // lbl_itemDetails
-            // 
-            this.lbl_itemDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_itemDetails.AutoSize = true;
-            this.lbl_itemDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_itemDetails.Location = new System.Drawing.Point(40, 503);
-            this.lbl_itemDetails.Name = "lbl_itemDetails";
-            this.lbl_itemDetails.Size = new System.Drawing.Size(548, 16);
-            this.lbl_itemDetails.TabIndex = 3;
-            this.lbl_itemDetails.Text = "Artist: Max Sänger | Titel: Cooler Song | Dauer: 00:05:25 | c:\\temp\\mySongs\\coole" +
-    "rSong.mp3";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(128, 128);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Multiselect = true;
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -163,6 +99,11 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton1.ToolTipText = "Neue Playlist anlegen";
             this.toolStripButton1.Click += new System.EventHandler(this.NewPlaylistButton_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(34, 6);
+            // 
             // toolStripButton7
             // 
             this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -172,6 +113,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton7.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton7.Text = "toolStripButton7";
             this.toolStripButton7.ToolTipText = "Projekt in DB sichern";
+            this.toolStripButton7.Click += new System.EventHandler(this.LoadProjectFormDb_Click);
             // 
             // toolStripButton8
             // 
@@ -182,6 +124,12 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton8.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton8.Text = "toolStripButton8";
             this.toolStripButton8.ToolTipText = "Projekt aus DB laden";
+            this.toolStripButton8.Click += new System.EventHandler(this.SaveProjectIntoDB_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(34, 6);
             // 
             // toolStripButton2
             // 
@@ -237,6 +185,60 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.ToolTipText = "Playlist leeren";
             this.toolStripButton6.Click += new System.EventHandler(this.ClearAllItems_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lbl_playlistDetails);
+            this.panel1.Controls.Add(this.lbl_playlistTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(37, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(876, 118);
+            this.panel1.TabIndex = 2;
+            // 
+            // lbl_playlistDetails
+            // 
+            this.lbl_playlistDetails.AutoSize = true;
+            this.lbl_playlistDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playlistDetails.Location = new System.Drawing.Point(27, 76);
+            this.lbl_playlistDetails.Name = "lbl_playlistDetails";
+            this.lbl_playlistDetails.Size = new System.Drawing.Size(375, 24);
+            this.lbl_playlistDetails.TabIndex = 1;
+            this.lbl_playlistDetails.Text = "Spielzeit: 00:15:12 | Autor: Max Mustermann";
+            // 
+            // lbl_playlistTitle
+            // 
+            this.lbl_playlistTitle.AutoSize = true;
+            this.lbl_playlistTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playlistTitle.Location = new System.Drawing.Point(24, 24);
+            this.lbl_playlistTitle.Name = "lbl_playlistTitle";
+            this.lbl_playlistTitle.Size = new System.Drawing.Size(424, 39);
+            this.lbl_playlistTitle.TabIndex = 0;
+            this.lbl_playlistTitle.Text = "Demoplaylist Charts 1980 ";
+            // 
+            // lbl_itemDetails
+            // 
+            this.lbl_itemDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_itemDetails.AutoSize = true;
+            this.lbl_itemDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_itemDetails.Location = new System.Drawing.Point(40, 503);
+            this.lbl_itemDetails.Name = "lbl_itemDetails";
+            this.lbl_itemDetails.Size = new System.Drawing.Size(548, 16);
+            this.lbl_itemDetails.TabIndex = 3;
+            this.lbl_itemDetails.Text = "Artist: Max Sänger | Titel: Cooler Song | Dauer: 00:05:25 | c:\\temp\\mySongs\\coole" +
+    "rSong.mp3";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(128, 128);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = true;
             // 
             // frm_main
             // 
