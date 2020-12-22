@@ -20,11 +20,11 @@ namespace Wifi.PlaylistEditor
         }
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
-        {            
-            if(_newPlaylistCreator.StartDialog() != DialogResult.OK)
+        {
+            if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
             {
                 return;
-            }            
+            }
 
             var title = _newPlaylistCreator.Title;
             var author = _newPlaylistCreator.Author;
@@ -64,14 +64,14 @@ namespace Wifi.PlaylistEditor
                 index++;
             }
 
-            listView1.LargeImageList = imageList1;            
+            listView1.LargeImageList = imageList1;
         }
 
         private void DisplayPlaylistDetails(IPlaylist playlist)
         {
             lbl_playlistTitle.Text = playlist.Name;
             //Spielzeit: 00:15:12 | Autor: Max Mustermann
-            lbl_playlistDetails.Text = $"Spielzeit: {playlist.Duration} | Autor: {playlist.Author}";
+            lbl_playlistDetails.Text = $"Spielzeit: {playlist.Duration.ToString("hh\\:mm\\:ss")} | Autor: {playlist.Author}";
         }
 
         private void AddNewItemToPlaylist_Click(object sender, EventArgs e)
@@ -97,8 +97,9 @@ namespace Wifi.PlaylistEditor
 
         private void frm_main_Load(object sender, EventArgs e)
         {
-            lbl_playlistTitle.Text = string.Empty;            
+            lbl_playlistTitle.Text = string.Empty;
             lbl_playlistDetails.Text = "Spielzeit: 00:00:00 | Autor: -";
+            lbl_itemDetails.Text = string.Empty;
 
             EnableItemCommands(false);
         }
@@ -112,16 +113,47 @@ namespace Wifi.PlaylistEditor
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var playlistItem = GetSelectedPlaylistItem();
+            if (playlistItem != null)
+            {
+                //Artist: Max Sänger | Titel: Cooler Song | Dauer: 00:05:25 | c:\temp\mySongs\coolerSong.mp3
+                lbl_itemDetails.Text = $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} " +
+                                       $"| Dauer: {playlistItem.Duration.ToString("hh\\:mm\\:ss")} | {playlistItem.Path}";
+            }
+        }
+
+
+        private IPlaylistItem GetSelectedPlaylistItem()
+        {
             foreach (ListViewItem item in listView1.SelectedItems)
             {
-                var playlistItem = item.Tag as IPlaylistItem;
-                if(playlistItem != null)
-                {
-                    //Artist: Max Sänger | Titel: Cooler Song | Dauer: 00:05:25 | c:\temp\mySongs\coolerSong.mp3
-                    lbl_itemDetails.Text = $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} " +
-                                           $"| Dauer: {playlistItem.Duration.ToString("hh\\:mm\\:ss")} | {playlistItem.Path}";
-                }
+                return item.Tag as IPlaylistItem;
             }
+
+            return null;
+        }
+
+        private void RemovePlaylistItem_Click(object sender, EventArgs e)
+        {
+            var playlistItem = GetSelectedPlaylistItem();
+            if (playlistItem != null)
+            {
+                _playlist.Remove(playlistItem);
+
+                //update view
+                DisplayPlaylistDetails(_playlist);
+                DisplayPlaylistItems(_playlist);
+            }
+        }
+
+        private void ClearAllItems_Click(object sender, EventArgs e)
+        {
+            _playlist.ClearAllItems();
+
+            //update view
+            lbl_itemDetails.Text = string.Empty;
+            DisplayPlaylistDetails(_playlist);
+            DisplayPlaylistItems(_playlist);
         }
     }
 }

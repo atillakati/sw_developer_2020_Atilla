@@ -144,6 +144,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton5.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton5.Text = "toolStripButton5";
             this.toolStripButton5.ToolTipText = "Item löschen";
+            this.toolStripButton5.Click += new System.EventHandler(this.RemovePlaylistItem_Click);
             // 
             // toolStripButton6
             // 
@@ -154,6 +155,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton6.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.ToolTipText = "Playlist leeren";
+            this.toolStripButton6.Click += new System.EventHandler(this.ClearAllItems_Click);
             // 
             // panel1
             // 
