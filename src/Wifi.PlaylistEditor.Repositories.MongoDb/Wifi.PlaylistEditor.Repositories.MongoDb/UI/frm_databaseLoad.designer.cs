@@ -1,5 +1,5 @@
 ﻿
-namespace Wifi.PlaylistEditor.Forms
+namespace Wifi.PlaylistEditor.Repositories.MongoDb.UI
 {
     partial class frm_databaseLoad
     {

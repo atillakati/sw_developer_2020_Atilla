@@ -53,7 +53,9 @@
     <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
@@ -116,8 +118,8 @@
     <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
-    <Reference Include="Wifi.PlaylistEditor.Repositories.MongoDb, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Wifi.PlaylistEditor.Repositories.MongoDb.1.3.3\lib\net472\Wifi.PlaylistEditor.Repositories.MongoDb.dll</HintPath>
+    <Reference Include="Wifi.PlaylistEditor.Repositories.MongoDb, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Wifi.PlaylistEditor.Repositories.MongoDb.1.3.4\lib\net472\Wifi.PlaylistEditor.Repositories.MongoDb.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

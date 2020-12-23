@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using Wifi.PlaylistEditor.Forms;
 using Wifi.PlaylistEditor.Properties;
-using Wifi.PlaylistEditor.Repositories.MongoDb;
 using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 using Wifi.PlaylistEditor.Types;
 
@@ -15,16 +13,22 @@ namespace Wifi.PlaylistEditor
         private readonly INewPlaylistCreator _newPlaylistCreator;
         private readonly IPlaylistItemFactory _playlistItemFactory;
         private readonly IRepositoryFactory _repositoryFactory;
+        private readonly IDatabaseRepository _databaseRepository;
+        private readonly IDatabaseLoadDialog _databaseLoadDialog;
 
-        public frm_main(INewPlaylistCreator newPlaylistCreator, 
+        public frm_main(INewPlaylistCreator newPlaylistCreator,
                         IPlaylistItemFactory playlistItemFactory,
-                        IRepositoryFactory repositoryFactory)
+                        IRepositoryFactory repositoryFactory,
+                        IDatabaseRepository databaseRepository,
+                        IDatabaseLoadDialog databaseLoadDialog)
         {
             InitializeComponent();
 
             _newPlaylistCreator = newPlaylistCreator;
             _playlistItemFactory = playlistItemFactory;
             _repositoryFactory = repositoryFactory;
+            _databaseRepository = databaseRepository;
+            _databaseLoadDialog = databaseLoadDialog;
         }
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
@@ -114,6 +118,7 @@ namespace Wifi.PlaylistEditor
 
         private void EnableItemCommands(bool enabled)
         {
+            toolStripButton3.Enabled = enabled;
             toolStripButton4.Enabled = enabled;
             toolStripButton5.Enabled = enabled;
             toolStripButton6.Enabled = enabled;
@@ -143,15 +148,18 @@ namespace Wifi.PlaylistEditor
 
         private void RemovePlaylistItem_Click(object sender, EventArgs e)
         {
-            var playlistItem = GetSelectedPlaylistItem();
-            if (playlistItem != null)
+            foreach (ListViewItem item in listView1.SelectedItems)
             {
-                _playlist.Remove(playlistItem);
-
-                //update view
-                DisplayPlaylistDetails(_playlist);
-                DisplayPlaylistItems(_playlist);
+                var playlistItem = item.Tag as IPlaylistItem;
+                if (playlistItem != null)
+                {
+                    _playlist.Remove(playlistItem);
+                }
             }
+
+            //update view
+            DisplayPlaylistDetails(_playlist);
+            DisplayPlaylistItems(_playlist);
         }
 
         private void ClearAllItems_Click(object sender, EventArgs e)
@@ -166,13 +174,13 @@ namespace Wifi.PlaylistEditor
 
         private void SavePlaylistAsFile_Click(object sender, EventArgs e)
         {
-            if(saveFileDialog1.ShowDialog() != DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
 
             IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
-            if(repository != null)
+            if (repository != null)
             {
                 repository.Save(saveFileDialog1.FileName, _playlist);
             }
@@ -201,36 +209,37 @@ namespace Wifi.PlaylistEditor
 
         private void SaveProjectIntoDB_Click(object sender, EventArgs e)
         {
-            IDatabaseRepository databaseRepository = new MongoDbRepository(_playlistItemFactory);
-
-            databaseRepository.Save(_playlist.Name, _playlist);
-            MessageBox.Show("Playlist wurde gespeichert.");
+            _databaseRepository.Save(_playlist.Name, _playlist);
+            MessageBox.Show("Playlist wurde gespeichert.", "Playlist Projekt sichern");
         }
 
         private void LoadProjectFormDb_Click(object sender, EventArgs e)
         {
-            IDatabaseRepository mongoDbRepository = new MongoDbRepository(_playlistItemFactory);
-
             //alle Playlist Dokumente laden
-            var names = mongoDbRepository.LoadAll();
+            var allPlaylistDocuments = _databaseRepository.LoadAll();
 
-            if (names != null)
+            if (allPlaylistDocuments == null)
             {
-                //Auswahldialog mit Playlistnamen versorgen und anzeigen
-                IDatabaseLoadDialog formLoad = new frm_databaseLoad();
-                if (formLoad.ShowDialog(names.Select(x => x.Name)) == DialogResult.OK)
-                {
-                    //ein einzelnes Dokument über den Playlist Namen laden
-                    _playlist = mongoDbRepository.Load(formLoad.SelectedPlaylistName);
-
-                    //update view
-                    lbl_itemDetails.Text = string.Empty;
-                    DisplayPlaylistDetails(_playlist);
-                    DisplayPlaylistItems(_playlist);
-
-                    EnableItemCommands(true);
-                }
+                MessageBox.Show("Keine Einträge in der Datenbank gefunden.", "Playlist Projekt laden");
+                return;
             }
+
+            //Auswahldialog mit Playlistnamen versorgen und anzeigen                
+            var listWithPlaylistNames = allPlaylistDocuments.Select(x => x.Name);
+            if (_databaseLoadDialog.ShowDialog(listWithPlaylistNames) != DialogResult.OK)
+            {
+                return;
+            }
+
+            //ein einzelnes Dokument über den Playlist Namen laden
+            _playlist = _databaseRepository.Load(_databaseLoadDialog.SelectedPlaylistName);
+
+            //update view
+            lbl_itemDetails.Text = string.Empty;
+            DisplayPlaylistDetails(_playlist);
+            DisplayPlaylistItems(_playlist);
+
+            EnableItemCommands(true);
         }
     }
 }

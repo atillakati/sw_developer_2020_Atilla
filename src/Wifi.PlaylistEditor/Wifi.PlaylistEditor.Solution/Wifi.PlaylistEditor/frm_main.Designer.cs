@@ -56,13 +56,19 @@ namespace Wifi.PlaylistEditor
             // 
             // listView1
             // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.BackColor = System.Drawing.SystemColors.Window;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listView1.GridLines = true;
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listView1.HideSelection = false;
+            this.listView1.HoverSelection = true;
             this.listView1.Location = new System.Drawing.Point(37, 124);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(870, 357);
+            this.listView1.Size = new System.Drawing.Size(1368, 588);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -84,7 +90,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(37, 538);
+            this.toolStrip1.Size = new System.Drawing.Size(37, 769);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -112,7 +118,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton7.Text = "toolStripButton7";
-            this.toolStripButton7.ToolTipText = "Projekt in DB sichern";
+            this.toolStripButton7.ToolTipText = "Projekt aus DB laden";
             this.toolStripButton7.Click += new System.EventHandler(this.LoadProjectFormDb_Click);
             // 
             // toolStripButton8
@@ -123,7 +129,7 @@ namespace Wifi.PlaylistEditor
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton8.Text = "toolStripButton8";
-            this.toolStripButton8.ToolTipText = "Projekt aus DB laden";
+            this.toolStripButton8.ToolTipText = "Projekt in DB sichern";
             this.toolStripButton8.Click += new System.EventHandler(this.SaveProjectIntoDB_Click);
             // 
             // toolStripSeparator2
@@ -194,7 +200,7 @@ namespace Wifi.PlaylistEditor
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(37, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(876, 118);
+            this.panel1.Size = new System.Drawing.Size(1374, 118);
             this.panel1.TabIndex = 2;
             // 
             // lbl_playlistDetails
@@ -222,7 +228,7 @@ namespace Wifi.PlaylistEditor
             this.lbl_itemDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_itemDetails.AutoSize = true;
             this.lbl_itemDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_itemDetails.Location = new System.Drawing.Point(40, 503);
+            this.lbl_itemDetails.Location = new System.Drawing.Point(40, 734);
             this.lbl_itemDetails.Name = "lbl_itemDetails";
             this.lbl_itemDetails.Size = new System.Drawing.Size(548, 16);
             this.lbl_itemDetails.TabIndex = 3;
@@ -244,7 +250,7 @@ namespace Wifi.PlaylistEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 538);
+            this.ClientSize = new System.Drawing.Size(1411, 769);
             this.Controls.Add(this.lbl_itemDetails);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);

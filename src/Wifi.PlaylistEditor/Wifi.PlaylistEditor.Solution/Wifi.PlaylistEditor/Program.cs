@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using Unity;
 using Wifi.PlaylistEditor.Factories;
 using Wifi.PlaylistEditor.PlaylistCreators;
+using Wifi.PlaylistEditor.Repositories.MongoDb;
+using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
+using Wifi.PlaylistEditor.Repositories.MongoDb.UI;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -28,6 +31,8 @@ namespace Wifi.PlaylistEditor
             container.RegisterType<INewPlaylistCreator, frm_newPlaylist>();
             container.RegisterType<IPlaylistItemFactory, PlaylistItemFactory>();
             container.RegisterType<IRepositoryFactory, RepositoryFactory>();
+            container.RegisterType<IDatabaseRepository, MongoDbRepository>();
+            container.RegisterType<IDatabaseLoadDialog, frm_databaseLoad>();
             
             Application.Run(container.Resolve<frm_main>());
         }

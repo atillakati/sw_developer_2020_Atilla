@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 
 
-namespace Wifi.PlaylistEditor.Forms
+namespace Wifi.PlaylistEditor.Repositories.MongoDb.UI
 {
     public partial class frm_databaseLoad : Form, IDatabaseLoadDialog
     {
@@ -39,6 +39,7 @@ namespace Wifi.PlaylistEditor.Forms
         #region private Methods
         private void frm_databaseLoad_Load(object sender, EventArgs e)
         {
+            lst_playlist.Items.Clear();
             lst_playlist.Items.AddRange(_playlistNames.ToArray());
         }
 
