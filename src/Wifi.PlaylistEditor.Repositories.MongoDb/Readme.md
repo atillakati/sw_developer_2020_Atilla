@@ -30,16 +30,22 @@ nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configura
 IDatabaseRepository mongoDbRepository = new MongoDbRepository(_playlistItemFactory);
 
 //alle Playlist Dokumente laden
-var names = mongoDbRepository.LoadAll();
+var allPlaylistDocuments = mongoDbRepository.LoadAll();
 
-if (names != null)
+if (allPlaylistDocuments != null)
 {
     //Auswahldialog mit Playlistnamen versorgen und anzeigen
-    frm_databaseLoad formLoad = new frm_databaseLoad(names.Select(x => x.Title));
-    if(formLoad.ShowDialog() == DialogResult.OK)
+    IDatabaseLoadDialog formLoad = new frm_databaseLoad();
+    
+    var listWithPlaylistNames = allPlaylistDocuments.Select(x => x.Name);
+    if(formLoad.ShowDialog(listWithPlaylistNames) == DialogResult.OK)
     {
         //ein einzelnes Dokument über den Playlist Namen laden
         _playlist = mongoDbRepository.Load(formLoad.SelectedPlaylistName);        
+        
+        //update your view here
+        //...
+        //..
     }
 }
 ```
