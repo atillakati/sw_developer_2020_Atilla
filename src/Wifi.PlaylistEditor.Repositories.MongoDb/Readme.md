@@ -11,6 +11,7 @@ Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer 
 ```
 nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
 ```
+Weitere Infos zum Thema Generieren von Nuget-Packages findest du hier: https://nuget-tutorial.net/en/tutorial/100001/create-nuget-package
 
 ## Die app.config
 
