@@ -28,6 +28,8 @@ Unter http://meinwifikurs.at/login/index.php findet ihr den ONLINE Zugang in die
 ![Clean Code](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/CC_Prinzipien.PNG)
 
 ## Wichtige Links zu unseren Beispielen:
+Playlist Editor Projekt Übersicht & Doku: https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/src/Architektur/Applikationsentwicklung_Atilla%20Kati.pptx
+
 mongodb-service: https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service
 
 mongodb library: https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/src/Wifi.PlaylistEditor.Repositories.MongoDb
