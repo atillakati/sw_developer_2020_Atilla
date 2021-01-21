@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wifi.PlaylistEditorUI"
         mc:Ignorable="d"
-        Title="Playlist Editor v2.0" Height="450" Width="800" Icon="playlist.png">
-    <Grid>
-        
-    </Grid>
+        Title="Intro to Animation" Height="450" Width="800" Background="Cornsilk">
+    <Window.Resources>
+        <Style x:Key="Selection" TargetType="Button">
+            <Setter Property="Background" Value="Gainsboro"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="200"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform CenterX="100" CenterY="100"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="210" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="210" Duration="0:0:0.2"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="3" Duration="0:0:0.2"/>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Aquamarine" FillBehavior="Stop" Duration="0:0:1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" To="-2" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="12" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="200" Duration="0:0:1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="200" Duration="0:0:1"/>
+
+                                <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="1" Duration="0:0:0.1"/>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Gainsboro" FillBehavior="Stop" Duration="0:0:1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" To="0" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <UniformGrid Rows="1" Margin="20" Height="250">
+            <Button Style="{StaticResource Selection}">Option 1</Button>
+            <Button Style="{StaticResource Selection}">Option 2</Button>
+            <Button Style="{StaticResource Selection}">Option 3</Button>
+        </UniformGrid>
+    </StackPanel>
 </Window>
