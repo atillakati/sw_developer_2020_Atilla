@@ -23,13 +23,13 @@ Nachdem wir unser erstes obligatorisch Hello World Beispiel im Detail angesehen 
 
 Unsere Reise wird uns von den elementaren Grunddatentypen bis hin zu Architektur Patterns wie Strategy-Pattern führen. Unterwegs besuchen wir Json, MongoDB, Micro-Services und evtl. sogar auch die Docker Grundlagen.
 
-Unter http://meinwifikurs.at/login/index.php findet ihr den ONLINE Zugang in die Lernplattform vom WIFI.
+Unter [meinwifikurs.at](http://meinwifikurs.at/login/index.php) findet ihr den ONLINE Zugang in die Lernplattform vom WIFI.
 
 ![Clean Code](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/docs/CC_Prinzipien.PNG)
 
 ## Wichtige Links zu unseren Beispielen:
-Playlist Editor Projekt Übersicht & Doku: https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/src/Architektur/Applikationsentwicklung_Atilla%20Kati.pptx
+Playlist Editor Projekt Übersicht & Doku: [LINK](https://github.com/atillakati/sw_developer_2020_Atilla/blob/main/src/Architektur/Applikationsentwicklung_Atilla%20Kati.pptx)
 
-mongodb-service: https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service
+mongodb-service: [LINK](https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service)
 
-mongodb library: https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/src/Wifi.PlaylistEditor.Repositories.MongoDb
+mongodb library: [LINK](https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/src/Wifi.PlaylistEditor.Repositories.MongoDb)
