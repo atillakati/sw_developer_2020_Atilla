@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using Wifi.PlaylistEditor.Properties;
-using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
@@ -13,22 +11,17 @@ namespace Wifi.PlaylistEditor
         private readonly INewPlaylistCreator _newPlaylistCreator;
         private readonly IPlaylistItemFactory _playlistItemFactory;
         private readonly IRepositoryFactory _repositoryFactory;
-        private readonly IDatabaseRepository _databaseRepository;
-        private readonly IDatabaseLoadDialog _databaseLoadDialog;
+        
 
         public frm_main(INewPlaylistCreator newPlaylistCreator,
                         IPlaylistItemFactory playlistItemFactory,
-                        IRepositoryFactory repositoryFactory,
-                        IDatabaseRepository databaseRepository,
-                        IDatabaseLoadDialog databaseLoadDialog)
+                        IRepositoryFactory repositoryFactory)
         {
             InitializeComponent();
 
             _newPlaylistCreator = newPlaylistCreator;
             _playlistItemFactory = playlistItemFactory;
             _repositoryFactory = repositoryFactory;
-            _databaseRepository = databaseRepository;
-            _databaseLoadDialog = databaseLoadDialog;
         }
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
@@ -207,39 +200,39 @@ namespace Wifi.PlaylistEditor
             }
         }
 
-        private void SaveProjectIntoDB_Click(object sender, EventArgs e)
-        {
-            _databaseRepository.Save(_playlist.Name, _playlist);
-            MessageBox.Show("Playlist wurde gespeichert.", "Playlist Projekt sichern");
-        }
+        //private void SaveProjectIntoDB_Click(object sender, EventArgs e)
+        //{
+        //    _databaseRepository.Save(_playlist.Name, _playlist);
+        //    MessageBox.Show("Playlist wurde gespeichert.", "Playlist Projekt sichern");
+        //}
 
-        private void LoadProjectFormDb_Click(object sender, EventArgs e)
-        {
-            //alle Playlist Dokumente laden
-            var allPlaylistDocuments = _databaseRepository.LoadAll();
+        //private void LoadProjectFormDb_Click(object sender, EventArgs e)
+        //{
+        //    //alle Playlist Dokumente laden
+        //    var allPlaylistDocuments = _databaseRepository.LoadAll();
 
-            if (allPlaylistDocuments == null)
-            {
-                MessageBox.Show("Keine Einträge in der Datenbank gefunden.", "Playlist Projekt laden");
-                return;
-            }
+        //    if (allPlaylistDocuments == null)
+        //    {
+        //        MessageBox.Show("Keine Einträge in der Datenbank gefunden.", "Playlist Projekt laden");
+        //        return;
+        //    }
 
-            //Auswahldialog mit Playlistnamen versorgen und anzeigen                
-            var listWithPlaylistNames = allPlaylistDocuments.Select(x => x.Name);
-            if (_databaseLoadDialog.ShowDialog(listWithPlaylistNames) != DialogResult.OK)
-            {
-                return;
-            }
+        //    //Auswahldialog mit Playlistnamen versorgen und anzeigen                
+        //    var listWithPlaylistNames = allPlaylistDocuments.Select(x => x.Name);
+        //    if (_databaseLoadDialog.ShowDialog(listWithPlaylistNames) != DialogResult.OK)
+        //    {
+        //        return;
+        //    }
 
-            //ein einzelnes Dokument über den Playlist Namen laden
-            _playlist = _databaseRepository.Load(_databaseLoadDialog.SelectedPlaylistName);
+        //    //ein einzelnes Dokument über den Playlist Namen laden
+        //    _playlist = _databaseRepository.Load(_databaseLoadDialog.SelectedPlaylistName);
 
-            //update view
-            lbl_itemDetails.Text = string.Empty;
-            DisplayPlaylistDetails(_playlist);
-            DisplayPlaylistItems(_playlist);
+        //    //update view
+        //    lbl_itemDetails.Text = string.Empty;
+        //    DisplayPlaylistDetails(_playlist);
+        //    DisplayPlaylistItems(_playlist);
 
-            EnableItemCommands(true);
-        }
+        //    EnableItemCommands(true);
+        //}
     }
 }

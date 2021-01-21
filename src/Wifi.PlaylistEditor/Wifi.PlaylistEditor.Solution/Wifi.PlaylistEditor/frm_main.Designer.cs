@@ -113,24 +113,24 @@ namespace Wifi.PlaylistEditor
             // toolStripButton7
             // 
             this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Enabled = false;
             this.toolStripButton7.Image = global::Wifi.PlaylistEditor.Properties.Resources.load_database_icon;
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton7.Text = "toolStripButton7";
             this.toolStripButton7.ToolTipText = "Projekt aus DB laden";
-            this.toolStripButton7.Click += new System.EventHandler(this.LoadProjectFormDb_Click);
             // 
             // toolStripButton8
             // 
             this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Enabled = false;
             this.toolStripButton8.Image = global::Wifi.PlaylistEditor.Properties.Resources.database_save;
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(34, 36);
             this.toolStripButton8.Text = "toolStripButton8";
             this.toolStripButton8.ToolTipText = "Projekt in DB sichern";
-            this.toolStripButton8.Click += new System.EventHandler(this.SaveProjectIntoDB_Click);
             // 
             // toolStripSeparator2
             // 
