@@ -2,7 +2,7 @@
 # Wifi.PlaylistEditor.Repositories.MongoDb
 Eine MongoDb Anbindung an unser PlaylistEditor Tool.
 Die Bereitstellung und einrichtung der MongoDb Umgebung ist hier beschrieben:
-https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service
+[mongodb-service](https://github.com/atillakati/sw_developer_2020_Atilla/tree/main/docs/mongodb-service)
 
 ## Nuget erstellen
 
@@ -11,7 +11,7 @@ Zuvor sollte die Solution im Release-Mode kompiliert werden. Die Versionsnummer 
 ```
 nuget pack Wifi.PlaylistEditor.Repositories.MongoDb.csproj -properties Configuration=Release
 ```
-Weitere Infos zum Thema Generieren von Nuget-Packages findest du hier: https://nuget-tutorial.net/en/tutorial/100001/create-nuget-package
+Weitere Infos zum Thema Generieren von Nuget-Packages findest du hier: [create-nuget-package](https://nuget-tutorial.net/en/tutorial/100001/create-nuget-package)
 
 ## Die app.config
 
