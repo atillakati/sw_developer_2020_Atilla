@@ -1,12 +1,10 @@
-﻿using System.Windows.Forms;
-
-namespace Wifi.PlaylistEditor
+﻿namespace Wifi.PlaylistEditor.Types
 {
     public interface INewPlaylistCreator
     {
         string Author { get; }
         string Title { get; }
 
-        DialogResult StartDialog();
+        bool StartDialog();
     }
 }

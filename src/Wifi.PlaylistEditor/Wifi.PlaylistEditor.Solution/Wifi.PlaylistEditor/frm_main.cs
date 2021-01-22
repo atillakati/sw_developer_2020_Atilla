@@ -26,7 +26,7 @@ namespace Wifi.PlaylistEditor
 
         private void NewPlaylistButton_Click(object sender, EventArgs e)
         {
-            if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
+            if (_newPlaylistCreator.StartDialog() != true)
             {
                 return;
             }

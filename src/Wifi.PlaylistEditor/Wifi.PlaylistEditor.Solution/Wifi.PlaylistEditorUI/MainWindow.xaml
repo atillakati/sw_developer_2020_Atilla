@@ -4,60 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wifi.PlaylistEditorUI"
+        xmlns:converter="clr-namespace:Wifi.PlaylistEditorUI.Converter"
         mc:Ignorable="d"
-        Title="Intro to Animation" Height="450" Width="800" Background="Cornsilk">
-    <Window.Resources>
-        <Style x:Key="Selection" TargetType="Button">
-            <Setter Property="Background" Value="Gainsboro"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Height" Value="200"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <RotateTransform CenterX="100" CenterY="100"/>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20" Duration="0:0:0.2"/>
-                                <DoubleAnimation Storyboard.TargetProperty="Width" To="210" Duration="0:0:0.2"/>
-                                <DoubleAnimation Storyboard.TargetProperty="Height" To="210" Duration="0:0:0.2"/>
-                                <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="3" Duration="0:0:0.2"/>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Aquamarine" FillBehavior="Stop" Duration="0:0:1"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" To="-2" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="12" Duration="0:0:0.2"/>
-                                <DoubleAnimation Storyboard.TargetProperty="Width" To="200" Duration="0:0:1"/>
-                                <DoubleAnimation Storyboard.TargetProperty="Height" To="200" Duration="0:0:1"/>
+        Title="Playlist Editor v2.0" Height="800" Width="1300"  Icon="playlist.png">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="110">
+            <Label Margin="10,5,10,0" FontSize="28" Content="{Binding Name}" />
+            <Label Margin="10,0,0,0"  FontWeight="Bold" Content="{Binding Duration}" />
+            <UniformGrid Margin="10,0,0,0" Rows="1" HorizontalAlignment="Left">
+                <Label Width="200" Content="{Binding Author}" />
+                <Label Content="{Binding Count}" />
+                <Label Content="{Binding CreatedAt}" />
+            </UniformGrid>
+        </StackPanel>
 
-                                <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="1" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Gainsboro" FillBehavior="Stop" Duration="0:0:1"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
+        <ToolBarTray Orientation="Vertical" DockPanel.Dock="Left" Background="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" UseLayoutRounding="False" >
+            <ToolBar Background="White" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <Button Click="newDocumentButton_Click">
+                    <Image Source="Resources/newDocument.png" Stretch="Fill" Height="32" />
+                </Button>
+                <Separator />
+                <Button>
+                    <Image Source="Resources/load.jpg" Stretch="Fill" Height="32" />
+                </Button>
+                <Button>
+                    <Image Source="Resources/Save.jpg" Stretch="Fill" Height="32" />
+                </Button>
+                <Separator />
+                <Button Click="AddNewItemButton_Click">
+                    <Image Source="Resources/add_item.png" Stretch="Fill" Height="32" />
+                </Button>
+                <Button Click="RemoveItemButton_Click">
+                    <Image Source="Resources/remove_item.png" Stretch="Fill" Height="32" />
+                </Button>
+                <Button Click="ClearAllItemsButton_Click">
+                    <Image Source="Resources/clear_items.jpg" Stretch="Fill" Height="32" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
 
-    <StackPanel>
-        <UniformGrid Rows="1" Margin="20" Height="250">
-            <Button Style="{StaticResource Selection}">Option 1</Button>
-            <Button Style="{StaticResource Selection}">Option 2</Button>
-            <Button Style="{StaticResource Selection}">Option 3</Button>
-        </UniformGrid>
-    </StackPanel>
+        <ListView x:Name="lst_items" Margin="3,3,10,10" DockPanel.Dock="Right" ItemsSource="{Binding Items}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel  Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical" VerticalAlignment="Center">
+                        <Image Source="{Binding Thumbnail, Converter={converter:ImageToImageSourceConverter}}" Width="128" Height="128" />
+                        <Label Content="{Binding Tag, Converter={converter:PlaylistItemViewModelToStringConverter}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
 </Window>

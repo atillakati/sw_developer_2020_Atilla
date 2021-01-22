@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wifi.PlaylistEditor.Types;
 
 namespace Wifi.PlaylistEditor
 {
@@ -31,9 +32,9 @@ namespace Wifi.PlaylistEditor
         }
 
 
-        public DialogResult StartDialog()
+        public bool StartDialog()
         {
-            return ShowDialog();
+            return ShowDialog() == DialogResult.OK;
         }
 
         private void btt_cancel_Click(object sender, EventArgs e)

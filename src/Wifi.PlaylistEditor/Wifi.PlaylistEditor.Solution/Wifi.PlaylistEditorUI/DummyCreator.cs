@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Wifi.PlaylistEditor.Types;
+﻿using Wifi.PlaylistEditor.Types;
 
-namespace Wifi.PlaylistEditor.PlaylistCreators
+namespace Wifi.PlaylistEditorUI
 {
     public class DummyCreator : INewPlaylistCreator
     {

@@ -121,7 +121,6 @@
     <Compile Include="PlaylistCreators\frm_newPlaylist.Designer.cs">
       <DependentUpon>frm_newPlaylist.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlaylistCreators\INewPlaylistCreator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_main.resx">

@@ -37,6 +37,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -45,6 +49,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.9\lib\net47\Unity.Container.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -55,6 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ImageToImageSourceConverter.cs" />
+    <Compile Include="Converter\PlaylistItemViewModelToStringConverter.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\PlaylistItemViewModel.cs" />
+    <Compile Include="ViewModel\PlaylistViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DummyCreator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +102,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,5 +124,36 @@
   <ItemGroup>
     <Resource Include="playlist.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\clear_items.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\database-save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\load.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\load-database-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\newDocument.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\no-image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\remove_item.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Save.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save_playlist.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
